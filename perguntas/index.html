@@ -134,7 +134,7 @@ footer{font-size:13px;color:var(--muted);text-align:center}
 const W=[
   {he:'כַּמָּה',tr:'káma',pt:'Quanto?',soa:'Soa como “cama”'},
   {he:'לָמָּה',tr:'láma',pt:'Por quê?',soa:'Soa como “lama”'},
-  {he:'מָתַי',tr:'matái',pt:'Quando?',soa:'Soa como “matei”'},
+  {he:'מָתַי',tr:'matái',pt:'Quando?'},
   {he:'מִי',tr:'mi',pt:'Quem?'},
   {he:'מָה',tr:'ma',pt:'O quê?'},
   {he:'אֵיפֹה',tr:'eifó',pt:'Onde?'},
@@ -162,7 +162,7 @@ const Q=[
   {q:'O que quer dizer לָמָּה (láma)?',o:[[null,'Lama'],[null,'Por quê?'],[null,'Quando?']],c:1,why:'Láma soa como “lama”, mas é “por quê?”.'},
   {q:'Alguém te mostra uma foto e você quer saber quem é. O que pergunta?',o:[['מִי זֶה?','mi ze?'],['מָה זֶה?','ma ze?'],['אֵיךְ זֶה?','eich ze?']],c:0,why:'Mi é “quem”. Ma é “o quê”, para coisas.'},
   {q:'Qual palavra você usa para perguntar “onde”?',o:[['אֵיךְ','eich'],['מָתַי','matái'],['אֵיפֹה','eifó']],c:2,why:'Eifó é “onde”. Eich é “como”.'},
-  {q:'O que quer dizer מָתַי (matái)?',o:[[null,'Quando?'],[null,'Quanto?'],[null,'Matei']],c:0,why:'Matái soa como “matei”, mas é “quando?”.'}
+  {q:'O que quer dizer מָתַי (matái)?',o:[[null,'Quando?'],[null,'Quanto?'],[null,'Quem?']],c:0,why:'Matái é “quando?”.'}
 ];
 let qi=0,score=0;const quiz=document.getElementById('quiz');
 function render(){
