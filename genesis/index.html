@@ -1,0 +1,124 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Gênesis em Hebraico</title>
+<meta name="description" content="Gênesis 1:1-5 em hebraico, na pronúncia nativa do professor Moshik, israelense, com transliteração e tradução.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600&family=Instrument+Sans:wght@400;600&family=Noto+Serif+Hebrew:wght@600&display=swap">
+<style>
+/* Layout: uma coluna estreita de leitura no celular, como uma lição do curso; cartões só onde há algo para tocar. */
+:root{
+  --navy:#0e3b43; --teal:#12665c; --gold:#e6c98d; --gold-ink:#8a6520;
+  --bg:#f3f0e9; --surface:#ffffff; --fg:#0e3b43; --muted:#4f5a57; --line:rgba(14,59,67,.12);
+  --chip:#d7ece8; --chip-ink:#12665c; --ok:#1f7a4d; --ok-bg:#dcefe4; --bad:#a3392b; --bad-bg:#f6e0dc;
+  --band:#0e3b43; --band-fg:#fbf9f5; --band-accent:#e6c98d;
+  --f-display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --f-body:"Instrument Sans",ui-sans-serif,system-ui,sans-serif;
+  --f-he:"Noto Serif Hebrew","Noto Sans Hebrew","Times New Roman",serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0b2328; --surface:#123138; --fg:#eef3f1; --muted:#a9bbb7; --line:rgba(143,214,200,.18);
+  --teal:#7fdaca; --gold-ink:#e6c98d; --chip:#1d4a50; --chip-ink:#a8e6da;
+  --ok:#8fdcb0; --ok-bg:#173d2c; --bad:#f2a99d; --bad-bg:#45231e;
+  --band:#123138; --band-fg:#eef3f1; --band-accent:#e6c98d; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0b2328; --surface:#123138; --fg:#eef3f1; --muted:#a9bbb7; --line:rgba(143,214,200,.18);
+  --teal:#7fdaca; --gold-ink:#e6c98d; --chip:#1d4a50; --chip-ink:#a8e6da;
+  --ok:#8fdcb0; --ok-bg:#173d2c; --bad:#f2a99d; --bad-bg:#45231e;
+  --band:#123138; --band-fg:#eef3f1; --band-accent:#e6c98d; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:17px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:640px;margin:0 auto;padding-block:28px 56px;display:flex;flex-direction:column;gap:44px}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;letter-spacing:-.03em;text-wrap:balance;margin:0}
+p{margin:0}
+.he{font-family:var(--f-he);font-weight:600;unicode-bidi:isolate}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:600;font-size:17px}
+.brand i{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--navy);color:#8fd6c8;font-style:normal;font-family:var(--f-he);font-size:20px}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink)}
+header{display:flex;flex-direction:column;gap:14px}
+header h1{font-size:clamp(34px,8vw,48px);line-height:1.02}
+header h1 span{color:var(--teal)}
+.lead{color:var(--muted);max-width:60ch}
+.steps{display:flex;flex-wrap:wrap;gap:8px}
+.steps span{font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--chip);color:var(--chip-ink)}
+section{display:flex;flex-direction:column;gap:16px}
+section>h2{font-size:28px;line-height:1.1}
+.hint{font-size:15px;color:var(--muted)}
+
+.how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.how div{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px;font-size:15px}
+.how b{display:block;font-family:var(--f-display);font-size:22px;color:var(--teal)}
+@media (max-width:420px){.how{grid-template-columns:1fr}}
+.all{appearance:none;border:0;border-radius:999px;background:var(--navy);color:#fbf9f5;font:600 17px var(--f-body);padding:14px 22px;cursor:pointer;align-self:flex-start;min-height:48px}
+:root[data-theme="dark"] .all{background:#1d4a50}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .all{background:#1d4a50}}
+.v{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;transition:border-color .2s ease,box-shadow .2s ease}
+.v.on{border-color:var(--gold);box-shadow:0 0 0 3px rgba(230,201,141,.35)}
+.vtop{display:flex;justify-content:space-between;align-items:center}
+.num{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-ink)}
+.play{appearance:none;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--chip);color:var(--chip-ink);border-radius:999px;padding:8px 14px;font:600 15px var(--f-body);cursor:pointer;min-height:44px}
+.play:focus-visible,.all:focus-visible,.cta a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.he.big{font-size:34px;line-height:1.75;text-align:right}
+.v .tr{font-family:var(--f-display);font-weight:600;color:var(--teal);font-size:18px}
+.v .pt{color:var(--muted)}
+.words{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;direction:rtl}
+.words li{direction:ltr;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:10px 14px;display:flex;flex-direction:column}
+.words .he{font-size:30px;line-height:1.5;text-align:right}
+.words b{font-family:var(--f-display);color:var(--teal)}
+.words small{color:var(--muted);font-size:14px}
+.note{font-size:15px;color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:16px;padding:14px 16px}
+.cta{border-radius:22px;background:var(--band);color:var(--band-fg);padding:24px 22px;display:flex;flex-direction:column;gap:14px}
+.cta h2{font-size:26px;line-height:1.1} .cta h2 b{color:var(--band-accent);font-weight:600}
+.cta a{align-self:flex-start;background:var(--band-accent);color:#0e3b43;text-decoration:none;font-weight:600;border-radius:999px;padding:14px 22px;min-height:48px}
+footer{font-size:13px;color:var(--muted);text-align:center}
+@media (prefers-reduced-motion: reduce){.v{transition:none}}
+</style></head><body><div class="wrap">
+<div class="brand"><i>ע</i>Hebraico Fluente</div>
+<header><div class="eyebrow">Guia grátis · Gênesis 1:1 a 5 · Pronúncia nativa</div>
+<h1>No princípio: <span>Gênesis em hebraico</span></h1>
+<p class="lead">Os cinco primeiros versículos da Bíblia, no texto original, lidos por mim, na <b>pronúncia nativa de Israel</b>. Nasci lá e o hebraico é a minha língua. Ouça, acompanhe com os olhos e repita em voz alta.</p></header>
+<section><h2>Como usar</h2><div class="how"><div><b>1</b>Toque em Ouvir e acompanhe o hebraico com os olhos.</div><div><b>2</b>Leia a transliteração para conferir o som.</div><div><b>3</b>Repita em voz alta, devagar, versículo por versículo.</div></div>
+<button class="all" type="button" id="all">▶ Ouvir os 5 versículos em sequência</button></section>
+<section><h2>Os versículos</h2><article class="v" data-i="0">
+  <div class="vtop"><span class="num">Versículo 1</span><button class="play" type="button" aria-label="Ouvir o versículo 1" data-src="audio/he-7e89adee.mp3"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg><span>Ouvir</span></button></div>
+  <p class="he big" lang="he" dir="rtl">בְּרֵאשִׁית בָּרָא אֱלֹהִים אֵת הַשָּׁמַיִם וְאֵת הָאָרֶץ</p>
+  <p class="tr">bereshít bará Elohím et ha-shamáyim ve-ét ha-árets</p>
+  <p class="pt">No princípio, Deus criou os céus e a terra.</p>
+</article>
+<article class="v" data-i="1">
+  <div class="vtop"><span class="num">Versículo 2</span><button class="play" type="button" aria-label="Ouvir o versículo 2" data-src="audio/he-90b6a1d0.mp3"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg><span>Ouvir</span></button></div>
+  <p class="he big" lang="he" dir="rtl">וְהָאָרֶץ הָיְתָה תֹהוּ וָבֹהוּ וְחֹשֶׁךְ עַל־פְּנֵי תְהוֹם וְרוּחַ אֱלֹהִים מְרַחֶפֶת עַל־פְּנֵי הַמָּיִם</p>
+  <p class="tr">veha-árets haytá tóhu vavóhu, vechóshech al-penéi tehóm, veruách Elohím merachéfet al-penéi ha-máyim</p>
+  <p class="pt">A terra era sem forma e vazia, havia escuridão sobre o abismo, e o espírito de Deus pairava sobre as águas.</p>
+</article>
+<article class="v" data-i="2">
+  <div class="vtop"><span class="num">Versículo 3</span><button class="play" type="button" aria-label="Ouvir o versículo 3" data-src="audio/he-2be1d48b.mp3"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg><span>Ouvir</span></button></div>
+  <p class="he big" lang="he" dir="rtl">וַיֹּאמֶר אֱלֹהִים יְהִי אוֹר וַיְהִי־אוֹר</p>
+  <p class="tr">vayómer Elohím: yehí or! vayehí-or</p>
+  <p class="pt">Deus disse: haja luz! E houve luz.</p>
+</article>
+<article class="v" data-i="3">
+  <div class="vtop"><span class="num">Versículo 4</span><button class="play" type="button" aria-label="Ouvir o versículo 4" data-src="audio/he-32cfd2cc.mp3"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg><span>Ouvir</span></button></div>
+  <p class="he big" lang="he" dir="rtl">וַיַּרְא אֱלֹהִים אֶת־הָאוֹר כִּי־טוֹב וַיַּבְדֵּל אֱלֹהִים בֵּין הָאוֹר וּבֵין הַחֹשֶׁךְ</p>
+  <p class="tr">vayár Elohím et-ha-ór ki-tov, vayavdél Elohím bein ha-ór uvéin ha-chóshech</p>
+  <p class="pt">Deus viu que a luz era boa, e Deus separou a luz da escuridão.</p>
+</article>
+<article class="v" data-i="4">
+  <div class="vtop"><span class="num">Versículo 5</span><button class="play" type="button" aria-label="Ouvir o versículo 5" data-src="audio/he-60af0b95.mp3"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg><span>Ouvir</span></button></div>
+  <p class="he big" lang="he" dir="rtl">וַיִּקְרָא אֱלֹהִים לָאוֹר יוֹם וְלַחֹשֶׁךְ קָרָא לָיְלָה וַיְהִי־עֶרֶב וַיְהִי־בֹקֶר יוֹם אֶחָד</p>
+  <p class="tr">vayikrá Elohím la-ór yom, velachóshech kará láyla. vayehí-érev vayehí-vóker, yom echád</p>
+  <p class="pt">Deus chamou a luz de dia, e a escuridão chamou de noite. Houve tarde e houve manhã: o primeiro dia (no hebraico, «dia um»).</p>
+</article>
+
+<p class="note">Este é hebraico bíblico: ele conta a história no passado (וַיֹּאמֶר é «e disse»). Leia pelo som e use a tradução para acompanhar o sentido.</p></section>
+<section><h2>A primeira frase, palavra por palavra</h2><p class="hint">Gênesis 1:1 tem 7 palavras. Leia da direita para a esquerda.</p><ul class="words"><li><span class="he" lang="he" dir="rtl">בְּרֵאשִׁית</span><b>bereshít</b><small>no princípio</small></li><li><span class="he" lang="he" dir="rtl">בָּרָא</span><b>bará</b><small>criou</small></li><li><span class="he" lang="he" dir="rtl">אֱלֹהִים</span><b>Elohím</b><small>Deus</small></li><li><span class="he" lang="he" dir="rtl">אֵת</span><b>et</b><small>(marca o objeto)</small></li><li><span class="he" lang="he" dir="rtl">הַשָּׁמַיִם</span><b>ha-shamáyim</b><small>os céus</small></li><li><span class="he" lang="he" dir="rtl">וְאֵת</span><b>ve-ét</b><small>e (objeto)</small></li><li><span class="he" lang="he" dir="rtl">הָאָרֶץ</span><b>ha-árets</b><small>a terra</small></li></ul></section>
+<div class="cta"><h2>Quer ler isso <b>sozinho</b>, sem depender da transliteração?</h2><p>No curso Hebraico Fluente você aprende as 22 letras e as vogais do zero, com explicação em português e a minha pronúncia nativa em cada palavra. Gênesis 1 está entre as leituras bônus do curso.</p><a href="https://hebraicofluente.com.br/dm?utm_campaign=guia-genesis">Fazer o teste grátis</a></div>
+<footer>Moshik Gueta · Hebraico Fluente · @hebraicofluente</footer>
+</div>
+<script>
+const a=new Audio();let fila=[],ativo=null;
+const marcar=i=>{document.querySelectorAll('.v').forEach((v,k)=>v.classList.toggle('on',k===i));};
+const tocar=(src,i)=>{a.src=src;a.currentTime=0;a.play().catch(()=>{});marcar(i);ativo=i;};
+document.querySelectorAll('.play').forEach((b,i)=>b.addEventListener('click',()=>{fila=[];tocar(b.dataset.src,i);}));
+document.getElementById('all').addEventListener('click',()=>{const bs=[...document.querySelectorAll('.play')];fila=bs.map((b,i)=>[b.dataset.src,i]);const [s,i]=fila.shift();tocar(s,i);});
+a.addEventListener('ended',()=>{if(fila.length){const [s,i]=fila.shift();setTimeout(()=>tocar(s,i),600);}else marcar(-1);});
+</script></body></html>
