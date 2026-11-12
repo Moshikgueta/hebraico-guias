@@ -131,7 +131,7 @@ $('gravar').onclick=async()=>{
   if(rec){rec.stop();return;}
   audio.pause();
   try{
-    if(!stream)stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false,channelCount:1}});
+    if(!stream)stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:true,channelCount:1}});
   }catch(e){mostrarErro('Não consegui usar o microfone. Toque em "aA" ou no cadeado da barra de endereço e permita o microfone para este site.');return;}
   chunks=[];rec=new MediaRecorder(stream,tipo?{mimeType:tipo,audioBitsPerSecond:128000}:undefined);
   const k=i;
