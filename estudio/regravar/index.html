@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Estúdio de gravação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600&family=Instrument+Sans:wght@400;600&family=Noto+Serif+Hebrew:wght@600&display=swap">
+<style>
+:root{--navy:#0e3b43;--teal:#12665c;--gold:#e6c98d;--gold-ink:#8a6520;--bg:#f3f0e9;--surface:#fff;--fg:#0e3b43;--muted:#4f5a57;--line:rgba(14,59,67,.12);
+--chip:#d7ece8;--chip-ink:#12665c;--rec:#b3362a;--ok:#1f7a4d;
+--f-display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;--f-body:"Instrument Sans",ui-sans-serif,system-ui,sans-serif;--f-he:"Noto Serif Hebrew",serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0b2328;--surface:#123138;--fg:#eef3f1;--muted:#a9bbb7;--line:rgba(143,214,200,.18);--teal:#7fdaca;--gold-ink:#e6c98d;--chip:#1d4a50;--chip-ink:#a8e6da;--rec:#f08a7c;--ok:#8fdcb0;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b2328;--surface:#123138;--fg:#eef3f1;--muted:#a9bbb7;--line:rgba(143,214,200,.18);--teal:#7fdaca;--gold-ink:#e6c98d;--chip:#1d4a50;--chip-ink:#a8e6da;--rec:#f08a7c;--ok:#8fdcb0;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:17px;line-height:1.5;
+padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-bottom:env(safe-area-inset-bottom,0px)}
+.wrap{max-width:640px;margin:0 auto;padding-block:22px 40px;display:flex;flex-direction:column;gap:22px}
+h1,h2{font-family:var(--f-display);font-weight:600;letter-spacing:-.03em;margin:0}
+p{margin:0}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:600}
+.brand i{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--navy);color:#8fd6c8;font-style:normal;font-family:var(--f-he);font-size:20px}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink)}
+h1{font-size:34px;line-height:1.05}
+.muted{color:var(--muted);font-size:15px}
+.dicas{display:flex;flex-wrap:wrap;gap:8px}
+.dicas span{font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--chip);color:var(--chip-ink)}
+.palco{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px 20px;display:flex;flex-direction:column;gap:18px}
+.topo{display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-ink)}
+.frase{font-family:var(--f-display);font-weight:600;font-size:clamp(28px,7.4vw,40px);line-height:1.18;letter-spacing:-.02em;min-height:5.5em;display:flex;align-items:center}
+.botoes{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+button{appearance:none;border:0;cursor:pointer;font:600 17px var(--f-body);border-radius:999px;min-height:52px;padding:0 22px;touch-action:manipulation}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+button:disabled{opacity:.4;cursor:default}
+.gravar{background:var(--rec);color:#fff;flex:1;display:inline-flex;align-items:center;justify-content:center;gap:10px}
+.gravar .ponto{width:14px;height:14px;border-radius:50%;background:#fff}
+.gravar.on .ponto{border-radius:3px}
+.gravar.on{animation:pulsa 1.2s ease-in-out infinite}
+@keyframes pulsa{50%{box-shadow:0 0 0 8px rgba(179,54,42,.18)}}
+@media (prefers-reduced-motion: reduce){.gravar.on{animation:none}}
+.sec{background:var(--chip);color:var(--chip-ink)}
+.nav{display:flex;justify-content:space-between;gap:10px}
+.nav button{flex:1;background:transparent;border:1px solid var(--line);color:var(--fg)}
+.tempo{font-variant-numeric:tabular-nums;font-weight:600;color:var(--rec);min-width:4ch;text-align:right}
+.estado{font-size:15px;color:var(--muted);min-height:1.5em}
+.estado.ok{color:var(--ok);font-weight:600}
+.lista{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.lista li{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:10px 14px;cursor:pointer;min-height:52px}
+.lista li.atual{border-color:var(--gold);box-shadow:0 0 0 2px rgba(230,201,141,.45)}
+.lista .n{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:600;font-size:14px;background:var(--chip);color:var(--chip-ink)}
+.lista li.feito .n{background:var(--ok);color:#fff}
+.lista .t{flex:1;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.enviar{background:var(--navy);color:#fbf9f5;width:100%}
+:root[data-theme="dark"] .enviar{background:#e6c98d;color:#0e3b43}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .enviar{background:#e6c98d;color:#0e3b43}}
+.links{display:flex;flex-direction:column;gap:8px}
+.links a{color:var(--teal);font-weight:600}
+.erro{background:#f6e0dc;color:#7a2318;border-radius:16px;padding:14px 16px;font-size:15px}
+</style></head><body><div class="wrap">
+<div class="brand"><i>ע</i>Hebraico Fluente</div>
+<header style="display:flex;flex-direction:column;gap:10px">
+<div class="eyebrow">Estúdio · A história do hebraico</div>
+<h1>Só faltam estas duas</h1>
+<p class="muted"><b>Frase 7:</b> diga "século <b>dezenove</b>" e "cresce<b>riam</b>". <b>Frase 3 é opcional:</b> grave só se quiser deixar o "<b>veio</b> do alfabeto" mais claro. Leia a frase, toque em Gravar e, quando terminar, toque em Parar. Ouça e, se quiser, grave de novo. A gravação fica só no seu celular até você enviar.</p>
+<div class="dicas"><span>Cômodo pequeno, sem eco</span><span>Celular a um palmo da boca</span><span>Ritmo de aula</span></div>
+</header>
+<div id="erro" class="erro" hidden></div>
+<section class="palco" aria-live="polite">
+<div class="topo"><span id="contador">Frase 1 de 10</span><span id="tempo" class="tempo"></span></div>
+<p id="frase" class="frase"></p>
+<div class="botoes">
+<button id="gravar" class="gravar" type="button"><span class="ponto"></span><span id="gravarTxt">Gravar</span></button>
+<button id="ouvir" class="sec" type="button" disabled>Ouvir</button>
+</div>
+<p id="estado" class="estado"></p>
+<div class="nav"><button id="ant" type="button">Anterior</button><button id="prox" type="button">Próxima</button></div>
+</section>
+<section style="display:flex;flex-direction:column;gap:10px">
+<h2 style="font-size:22px">Para gravar de novo</h2>
+<ul id="lista" class="lista"></ul>
+</section>
+<section style="display:flex;flex-direction:column;gap:10px">
+<button id="enviar" class="enviar" type="button" disabled>Enviar as gravações</button>
+<p class="muted" id="enviarDica">Depois de gravar, toque aqui e salve os arquivos em Arquivos do iPhone, ou mande direto para a conversa com o Claude.</p>
+<div id="links" class="links"></div>
+</section>
+</div>
+<script>
+const NUM=[7,3];
+const FRASES=[
+"No fim do século dezenove, Eliezer Ben-Yehuda ajudou a mudar essa história. Na casa dele, os filhos cresceriam falando só hebraico.",
+"Mas as letras tinham outro desenho. A escrita quadrada que você lê hoje veio do alfabeto aramaico e foi adotada aos poucos, a partir do exílio na Babilônia."];
+const $=id=>document.getElementById(id);
+const tipo=['audio/mp4','audio/webm;codecs=opus','audio/webm','audio/ogg'].find(t=>window.MediaRecorder&&MediaRecorder.isTypeSupported(t))||'';
+const ext=tipo.includes('mp4')?'m4a':tipo.includes('ogg')?'ogg':'webm';
+const takes=new Array(FRASES.length).fill(null);
+let i=0,rec=null,stream=null,chunks=[],t0=0,timer=null,audio=new Audio();
+
+// guarda no aparelho para não perder se a página recarregar
+let db=null;
+try{const r=indexedDB.open('estudio-historia-v3',1);r.onupgradeneeded=()=>r.result.createObjectStore('t');
+r.onsuccess=()=>{db=r.result;const tx=db.transaction('t').objectStore('t');FRASES.forEach((_,k)=>{const g=tx.get(k);g.onsuccess=()=>{if(g.result){takes[k]=g.result;render();}}});};}catch(e){}
+const salvar=(k,b)=>{try{db&&db.transaction('t','readwrite').objectStore('t').put(b,k)}catch(e){}};
+
+function render(){
+  $('contador').textContent=`Frase ${NUM[i]}`+(i===1?' (opcional)':'');
+  $('frase').textContent=FRASES[i];
+  $('ouvir').disabled=!takes[i]||!!rec;
+  $('gravarTxt').textContent=rec?'Parar':takes[i]?'Gravar de novo':'Gravar';
+  $('gravar').classList.toggle('on',!!rec);
+  $('ant').disabled=i===0||!!rec; $('prox').disabled=i===FRASES.length-1||!!rec;
+  if(!rec){const e=$('estado');e.className='estado'+(takes[i]?' ok':'');e.textContent=takes[i]?'Gravada. Ouça para conferir ou passe para a próxima.':'';}
+  const feitas=takes.filter(Boolean).length;
+  $('enviar').disabled=feitas===0||!!rec;
+  $('enviar').textContent=feitas===FRASES.length?'Enviar as gravações':`Enviar as gravações (${feitas} de ${FRASES.length})`;
+  $('lista').innerHTML=FRASES.map((f,k)=>`<li data-k="${k}" class="${k===i?'atual':''} ${takes[k]?'feito':''}" role="button" tabindex="0"><span class="n">${takes[k]?'✓':NUM[k]}</span><span class="t">${f}</span></li>`).join('');
+}
+$('lista').addEventListener('click',e=>{const li=e.target.closest('li');if(li&&!rec){i=+li.dataset.k;render();window.scrollTo({top:0,behavior:'smooth'});}});
+$('lista').addEventListener('keydown',e=>{if(e.key==='Enter'){const li=e.target.closest('li');if(li&&!rec){i=+li.dataset.k;render();}}});
+$('ant').onclick=()=>{i=Math.max(0,i-1);render();};
+$('prox').onclick=()=>{i=Math.min(FRASES.length-1,i+1);render();};
+$('ouvir').onclick=()=>{audio.src=URL.createObjectURL(takes[i]);audio.play().catch(()=>{});};
+
+$('gravar').onclick=async()=>{
+  if(rec){rec.stop();return;}
+  audio.pause();
+  try{
+    if(!stream)stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:true,channelCount:1}});
+  }catch(e){mostrarErro('Não consegui usar o microfone. Toque em "aA" ou no cadeado da barra de endereço e permita o microfone para este site.');return;}
+  chunks=[];rec=new MediaRecorder(stream,tipo?{mimeType:tipo,audioBitsPerSecond:128000}:undefined);
+  const k=i;
+  rec.ondataavailable=e=>e.data.size&&chunks.push(e.data);
+  rec.onstop=()=>{clearInterval(timer);$('tempo').textContent='';const b=new Blob(chunks,{type:rec.mimeType||tipo});rec=null;
+    if(b.size>2000){takes[k]=b;salvar(k,b);}render();
+    if(k===i&&i<FRASES.length-1&&takes[k]){$('estado').textContent='Gravada. Ouça ou toque em Próxima.';}};
+  rec.start();t0=Date.now();
+  timer=setInterval(()=>{const s=(Date.now()-t0)/1000;$('tempo').textContent=s.toFixed(1)+' s';},100);
+  $('estado').className='estado';$('estado').textContent='Gravando. Respire, leia e toque em Parar no fim.';
+  render();
+};
+function mostrarErro(m){const e=$('erro');e.textContent=m;e.hidden=false;}
+if(!navigator.mediaDevices||!window.MediaRecorder)mostrarErro('Este navegador não grava áudio. Abra este link no Safari ou no Chrome do celular.');
+
+$('enviar').onclick=async()=>{
+  const fs=takes.map((b,k)=>b&&new File([b],`historia3-frase-${String(NUM[k]).padStart(2,'0')}.${ext}`,{type:b.type})).filter(Boolean);
+  if(navigator.canShare&&navigator.canShare({files:fs})){
+    try{await navigator.share({files:fs,title:'Gravações: A história do hebraico'});return;}catch(e){if(e.name==='AbortError')return;}
+  }
+  $('links').innerHTML='<p class="muted">Toque em cada arquivo para salvar:</p>'+fs.map(f=>`<a href="${URL.createObjectURL(f)}" download="${f.name}">${f.name}</a>`).join('');
+};
+render();
+</script></body></html>
