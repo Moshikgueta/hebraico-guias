@@ -80,21 +80,21 @@ button:disabled{opacity:.4;cursor:default}
 </section>
 <section style="display:flex;flex-direction:column;gap:10px">
 <button id="enviar" class="enviar" type="button" disabled>Enviar as gravações</button>
-<p class="muted" id="enviarDica">Grave as 10 frases. Depois toque aqui e salve os arquivos em Arquivos do iPhone, ou mande direto para a conversa com o Claude.</p>
+<p class="muted" id="enviarDica">A frase 10 é a mesma de antes: se quiser, pode pular. Grave as outras. Depois toque aqui e salve os arquivos em Arquivos do iPhone, ou mande direto para a conversa com o Claude.</p>
 <div id="links" class="links"></div>
 </section>
 </div>
 <script>
 const FRASES=[
-"O hebraico morreu. E voltou a viver.",
-"Há cerca de três mil anos, ele já era escrito com um alfabeto de vinte e duas letras. Só consoantes.",
-"Mas as letras tinham outro desenho. As letras quadradas que você lê hoje se firmaram depois do exílio na Babilônia.",
-"Por volta do ano duzentos, o hebraico deixou de ser falado no dia a dia.",
-"Por cerca de dezessete séculos, ele ficou vivo nas orações, nos livros e no estudo.",
-"Os pontinhos das vogais, o nikud, só apareceram na Idade Média, para que ninguém esquecesse como se lia.",
-"Até que, no fim do século dezenove, Eliezer Ben-Yehuda tomou uma decisão: na casa dele, só se falaria hebraico.",
-"O filho dele, Itamar, é considerado o primeiro falante nativo do hebraico moderno.",
-"Hoje, milhões de pessoas sonham, brigam e amam em hebraico. E as vinte e duas letras continuam as mesmas.",
+"O hebraico deixou de ser falado. E voltou a viver.",
+"Há cerca de três mil anos, o hebraico já era escrito com um alfabeto de vinte e duas letras. As letras marcavam só as consoantes.",
+"Mas as letras tinham outro desenho. A escrita quadrada que você lê hoje veio do alfabeto aramaico e foi adotada aos poucos, a partir do exílio na Babilônia.",
+"Por volta do século III, o hebraico já estava deixando de ser falado no dia a dia.",
+"Por muitos séculos, ele continuou vivo nas orações, nos livros, na poesia e no estudo. Mas ninguém crescia falando hebraico em casa.",
+"Na Idade Média, estudiosos chamados massoretas criaram os pontinhos das vogais, o nikud, para preservar a pronúncia do texto.",
+"No fim do século XIX, Eliezer Ben-Yehuda ajudou a mudar essa história. Na casa dele, os filhos cresceriam falando só hebraico.",
+"O filho dele, Itamar Ben-Avi, ficou conhecido como o primeiro falante nativo do hebraico moderno.",
+"Hoje, milhões de pessoas sonham, brigam e amam em hebraico. A língua mudou e as letras ganharam outro desenho. Mas continuam sendo as mesmas vinte e duas.",
 "Quer aprender a ler essas letras? Faça o teste grátis do Hebraico Fluente. O link está na bio."];
 const $=id=>document.getElementById(id);
 const tipo=['audio/mp4','audio/webm;codecs=opus','audio/webm','audio/ogg'].find(t=>window.MediaRecorder&&MediaRecorder.isTypeSupported(t))||'';
@@ -104,7 +104,7 @@ let i=0,rec=null,stream=null,chunks=[],t0=0,timer=null,audio=new Audio();
 
 // guarda no aparelho para não perder se a página recarregar
 let db=null;
-try{const r=indexedDB.open('estudio-historia',1);r.onupgradeneeded=()=>r.result.createObjectStore('t');
+try{const r=indexedDB.open('estudio-historia-v2',1);r.onupgradeneeded=()=>r.result.createObjectStore('t');
 r.onsuccess=()=>{db=r.result;const tx=db.transaction('t').objectStore('t');FRASES.forEach((_,k)=>{const g=tx.get(k);g.onsuccess=()=>{if(g.result){takes[k]=g.result;render();}}});};}catch(e){}
 const salvar=(k,b)=>{try{db&&db.transaction('t','readwrite').objectStore('t').put(b,k)}catch(e){}};
 
@@ -148,7 +148,7 @@ function mostrarErro(m){const e=$('erro');e.textContent=m;e.hidden=false;}
 if(!navigator.mediaDevices||!window.MediaRecorder)mostrarErro('Este navegador não grava áudio. Abra este link no Safari ou no Chrome do celular.');
 
 $('enviar').onclick=async()=>{
-  const fs=takes.map((b,k)=>b&&new File([b],`historia-frase-${String(k+1).padStart(2,'0')}.${ext}`,{type:b.type})).filter(Boolean);
+  const fs=takes.map((b,k)=>b&&new File([b],`historia2-frase-${String(k+1).padStart(2,'0')}.${ext}`,{type:b.type})).filter(Boolean);
   if(navigator.canShare&&navigator.canShare({files:fs})){
     try{await navigator.share({files:fs,title:'Gravações: A história do hebraico'});return;}catch(e){if(e.name==='AbortError')return;}
   }
