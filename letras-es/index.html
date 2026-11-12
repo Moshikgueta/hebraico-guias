@@ -1,0 +1,123 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Tus primeras letras en hebreo</title>
+<meta name="description" content="Guía rápida del curso Hebreo Fluido: las tres primeras letras y tu primera palabra en hebreo, con la voz del profesor Moshik.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600&family=Instrument+Sans:wght@400;600&family=Noto+Serif+Hebrew:wght@600&display=swap">
+<style>
+/* Layout: uma coluna estreita de leitura no celular, como uma lição do curso; cartões só onde há algo para tocar. */
+:root{
+  --navy:#0e3b43; --teal:#12665c; --gold:#e6c98d; --gold-ink:#8a6520;
+  --bg:#f3f0e9; --surface:#ffffff; --fg:#0e3b43; --muted:#4f5a57; --line:rgba(14,59,67,.12);
+  --chip:#d7ece8; --chip-ink:#12665c; --ok:#1f7a4d; --ok-bg:#dcefe4; --bad:#a3392b; --bad-bg:#f6e0dc;
+  --band:#0e3b43; --band-fg:#fbf9f5; --band-accent:#e6c98d;
+  --f-display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --f-body:"Instrument Sans",ui-sans-serif,system-ui,sans-serif;
+  --f-he:"Noto Serif Hebrew","Noto Sans Hebrew","Times New Roman",serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0b2328; --surface:#123138; --fg:#eef3f1; --muted:#a9bbb7; --line:rgba(143,214,200,.18);
+  --teal:#7fdaca; --gold-ink:#e6c98d; --chip:#1d4a50; --chip-ink:#a8e6da;
+  --ok:#8fdcb0; --ok-bg:#173d2c; --bad:#f2a99d; --bad-bg:#45231e;
+  --band:#123138; --band-fg:#eef3f1; --band-accent:#e6c98d; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0b2328; --surface:#123138; --fg:#eef3f1; --muted:#a9bbb7; --line:rgba(143,214,200,.18);
+  --teal:#7fdaca; --gold-ink:#e6c98d; --chip:#1d4a50; --chip-ink:#a8e6da;
+  --ok:#8fdcb0; --ok-bg:#173d2c; --bad:#f2a99d; --bad-bg:#45231e;
+  --band:#123138; --band-fg:#eef3f1; --band-accent:#e6c98d; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:17px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:640px;margin:0 auto;padding-block:28px 56px;display:flex;flex-direction:column;gap:44px}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;letter-spacing:-.03em;text-wrap:balance;margin:0}
+p{margin:0}
+.he{font-family:var(--f-he);font-weight:600;unicode-bidi:isolate}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:600;font-size:17px}
+.brand i{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--navy);color:#8fd6c8;font-style:normal;font-family:var(--f-he);font-size:20px}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink)}
+header{display:flex;flex-direction:column;gap:14px}
+header h1{font-size:clamp(34px,8vw,48px);line-height:1.02}
+header h1 span{color:var(--teal)}
+.lead{color:var(--muted);max-width:60ch}
+.steps{display:flex;flex-wrap:wrap;gap:8px}
+.steps span{font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--chip);color:var(--chip-ink)}
+section{display:flex;flex-direction:column;gap:16px}
+section>h2{font-size:28px;line-height:1.1}
+.hint{font-size:15px;color:var(--muted)}
+
+
+.letra{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px 20px;display:flex;flex-direction:column;gap:12px}
+.num{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-ink)}
+.corpo{display:flex;gap:18px;align-items:flex-start}
+.grande{flex:none;width:104px;height:120px;display:grid;place-items:center;font-size:92px;line-height:1;border-radius:18px;background:var(--chip);color:var(--fg)}
+.info{display:flex;flex-direction:column;gap:8px;min-width:0}
+.info h3{font-size:26px}
+.info p{color:var(--muted);font-size:16px}
+.bt{display:flex;gap:8px;flex-wrap:wrap}
+.play{appearance:none;border:1px solid var(--line);background:var(--chip);color:var(--chip-ink);border-radius:999px;padding:8px 14px;font:600 15px var(--f-body);cursor:pointer;min-height:44px;display:inline-flex;align-items:center;gap:4px}
+.play .he{font-size:20px}
+.play.on{outline:3px solid var(--gold)}
+.play:focus-visible,.cta a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.sabia{font-size:15px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px}
+.palavra{border-radius:24px;background:var(--band);color:var(--band-fg);padding:24px 22px;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.palavra .w{font-size:96px;line-height:1.3;color:var(--band-accent);align-self:center}
+.palavra .eq{align-self:center;display:flex;gap:10px;align-items:center;font-size:18px;direction:rtl}
+.palavra .eq span{direction:ltr}
+.palavra .eq .he{font-size:34px}
+.palavra p{opacity:.92}
+.palavra .play{background:rgba(251,249,245,.12);color:var(--band-fg);border-color:rgba(251,249,245,.25);align-self:center}
+.telas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.telas figure{margin:0;display:flex;flex-direction:column;gap:6px}
+.telas img{width:100%;aspect-ratio:9/19;object-fit:cover;object-position:top;border-radius:16px;border:1px solid var(--line);background:var(--surface)}
+.telas figcaption{font-size:13px;color:var(--muted);text-align:center}
+.faltam{font-family:var(--f-display);font-weight:600;font-size:40px;line-height:1;letter-spacing:-.03em}
+.faltam span{color:var(--teal)}
+.cta{border-radius:22px;background:var(--band);color:var(--band-fg);padding:24px 22px;display:flex;flex-direction:column;gap:14px}
+.cta h2{font-size:26px;line-height:1.1} .cta h2 b{color:var(--band-accent);font-weight:600}
+.cta a{align-self:flex-start;background:var(--band-accent);color:#0e3b43;text-decoration:none;font-weight:600;border-radius:999px;padding:14px 22px;min-height:48px}
+.cta small{opacity:.85;font-size:14px}
+footer{font-size:13px;color:var(--muted);text-align:center}
+</style></head><body><div class="wrap">
+<div class="brand"><i>ע</i>Hebreo Fluido</div>
+<header><div class="eyebrow">Guía rápida · directo del curso</div>
+<h1>Tus <span>3 primeras letras</span> en hebreo</h1>
+<p class="lead">Así empieza el curso Hebreo Fluido. En pocos minutos conoces tres letras, escuchas mi pronunciación nativa y lees tu primera palabra en hebreo, por tu cuenta. Recuerda: el hebreo se lee de derecha a izquierda.</p></header>
+<section><h2>Las letras</h2><article class="letra">
+<div class="topo"><span class="num">Letra 1</span></div>
+<div class="corpo"><div class="grande he" lang="he" dir="rtl">א</div>
+<div class="info"><h3>Álef</h3><p>No tiene sonido propio. <span class="he" lang="he" dir="rtl">א</span> es un apoyo: existe para sostener la vocal que viene con ella. Pronuncias solo la vocal.</p>
+<div class="bt"><button class="play" type="button" data-src="../letras/audio/he-3c3ac3e3.mp3" aria-label="Escuchar el nombre Álef">▶ Nombre</button><button class="play" type="button" data-src="../letras/audio/he-7d989155.mp3" aria-label="Escuchar la sílaba a">▶ <span class="he" lang="he" dir="rtl">אַ</span>&nbsp;a</button></div></div></div>
+<p class="sabia"><b>¿Sabías que...?</b> <span class="he" lang="he" dir="rtl">אָלֶף</span> tiene el mismo nombre que la letra fenicia que los griegos adoptaron como alfa, prima de nuestra <span class="he" lang="he" dir="rtl">א</span>. Y alfa más beta dieron "alfabeto": la palabra que usas en español viene de esas dos letras griegas.</p></article>
+<article class="letra">
+<div class="topo"><span class="num">Letra 2</span></div>
+<div class="corpo"><div class="grande he" lang="he" dir="rtl">מ</div>
+<div class="info"><h3>Mem</h3><p>Igual que la M del español, en madre, mesa, música. No hay nada nuevo que aprender en el sonido - solo en la forma.</p>
+<div class="bt"><button class="play" type="button" data-src="../letras/audio/he-da15b870.mp3" aria-label="Escuchar el nombre Mem">▶ Nombre</button><button class="play" type="button" data-src="../letras/audio/he-cdc46290.mp3" aria-label="Escuchar la sílaba ma">▶ <span class="he" lang="he" dir="rtl">מַ</span>&nbsp;ma</button></div></div></div>
+<p class="sabia"><b>¿Sabías que...?</b> El nombre Mem viene de una palabra semítica muy antigua que quería decir "agua". Es de la misma familia que <span class="he" lang="he" dir="rtl">מַיִם</span> (máyim), la palabra que todavía hoy quiere decir "agua" en hebreo.</p></article>
+<article class="letra">
+<div class="topo"><span class="num">Letra 3</span></div>
+<div class="corpo"><div class="grande he" lang="he" dir="rtl">ת</div>
+<div class="info"><h3>Tav</h3><p>Como la T de "taco" - siempre seca, nunca con sonido de CH.</p>
+<div class="bt"><button class="play" type="button" data-src="../letras/audio/he-34245f01.mp3" aria-label="Escuchar el nombre Tav">▶ Nombre</button><button class="play" type="button" data-src="../letras/audio/he-6a972cef.mp3" aria-label="Escuchar la sílaba ta">▶ <span class="he" lang="he" dir="rtl">תַ</span>&nbsp;ta</button></div></div></div>
+<p class="sabia"><b>¿Sabías que...?</b> <span class="he" lang="he" dir="rtl">ת</span> es la última letra del alfabeto. Por eso la expresión que equivale a nuestro "de la A a la Z" en hebreo es <span class="he" lang="he" dir="rtl">מֵאָלֶף עַד תָו</span> - de Álef a Tav.</p></article>
+</section>
+<section><h2>Tu primera palabra</h2>
+<div class="palavra"><div class="eq"><span class="he" lang="he" dir="rtl">א</span><span>+</span><span class="he" lang="he" dir="rtl">מ</span><span>+</span><span class="he" lang="he" dir="rtl">ת</span></div>
+<div class="w he" lang="he" dir="rtl">אֶמֶת</div>
+<button class="play" type="button" data-src="../letras/audio/he-ee83f8c6.mp3" aria-label="Escuchar émet">▶ Escuchar: émet</button>
+<p><b>Émet</b> significa <b>verdad</b>. Álef, Mem y Tav: las tres letras que acabas de conocer. Leíste hebreo.</p></div>
+<div class="letra"><div class="corpo"><div class="grande he" lang="he" dir="rtl" style="font-size:54px">אִמָא</div><div class="info"><h3>Bonus: íma</h3><p>Significa <b>mamá</b>, y también usa solo Álef y Mem.</p><div class="bt"><button class="play" type="button" data-src="../letras/audio/he-febde9cc.mp3" aria-label="Escuchar íma">▶ Escuchar</button></div></div></div></div></section>
+<section><p class="faltam">Faltan <span>19 letras.</span></p>
+<p class="hint">En el curso aprendes las otras 19 letras y las vocales, con explicaciones en español, mi voz en cada palabra y juegos para practicar.</p>
+<div class="telas"><figure><img src="../letras/img/licao-alef.jpg" alt="Pantalla de una lección del curso, con la letra y la explicación" loading="lazy"><figcaption>Lecciones cortas</figcaption></figure>
+<figure><img src="../letras/img/academia.jpg" alt="Pantalla de los juegos del curso" loading="lazy"><figcaption>Juegos para practicar</figcaption></figure>
+<figure><img src="../letras/img/dia-placas-s.jpg" alt="Juego de leer carteles reales de Israel" loading="lazy"><figcaption>Carteles de Israel</figcaption></figure></div></section>
+<div class="cta"><h2>¿Quieres conocer las otras 19? <b>Haz la prueba gratis</b></h2>
+<p>El curso en español está por abrir. Escríbeme por mensaje directo y te muestro cómo funciona y cómo hacer la prueba gratis.</p>
+<a href="https://ig.me/m/hebraicofluente">Escríbeme y te muestro el curso</a></div>
+<footer>Moshik Gueta · Hebreo Fluido</footer>
+</div>
+<script>
+const a=new Audio();let atual=null;
+document.querySelectorAll('.play').forEach(b=>b.addEventListener('click',()=>{a.src=b.dataset.src;a.currentTime=0;a.play().catch(()=>{});atual&&atual.classList.remove('on');b.classList.add('on');atual=b;}));
+a.addEventListener('ended',()=>{atual&&atual.classList.remove('on');});
+</script></body></html>
