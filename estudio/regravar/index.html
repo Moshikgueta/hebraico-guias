@@ -59,8 +59,8 @@ button:disabled{opacity:.4;cursor:default}
 <div class="brand"><i>ע</i>Hebraico Fluente</div>
 <header style="display:flex;flex-direction:column;gap:10px">
 <div class="eyebrow">Estúdio · A história do hebraico</div>
-<h1>Só falta a frase final</h1>
-<p class="muted">Diga a palavra <b>LETRAS</b> com destaque, como um convite. Leia a frase, toque em Gravar e, quando terminar, toque em Parar. Ouça e, se quiser, grave de novo. A gravação fica só no seu celular até você enviar.</p>
+<h1>Frase 6, mais uma vez</h1>
+<p class="muted">Fale um pouco mais devagar em "<b>leitura tradicional</b>", separando bem as sílabas: tra-di-cio-nal. Leia a frase, toque em Gravar e, quando terminar, toque em Parar. Ouça e, se quiser, grave de novo. A gravação fica só no seu celular até você enviar.</p>
 <div class="dicas"><span>Cômodo pequeno, sem eco</span><span>Celular a um palmo da boca</span><span>Ritmo de aula</span></div>
 </header>
 <div id="erro" class="erro" hidden></div>
@@ -85,9 +85,9 @@ button:disabled{opacity:.4;cursor:default}
 </section>
 </div>
 <script>
-const NUM=[10];
+const NUM=[6];
 const FRASES=[
-"Quer aprender a ler essas letras? Comente LETRAS e eu te mando de presente um guia rápido, direto do meu curso."];
+"Na Idade Média, estudiosos chamados massoretas criaram os sinais das vogais, o nikud, para preservar a leitura tradicional do texto bíblico."];
 const $=id=>document.getElementById(id);
 const tipo=['audio/mp4','audio/webm;codecs=opus','audio/webm','audio/ogg'].find(t=>window.MediaRecorder&&MediaRecorder.isTypeSupported(t))||'';
 const ext=tipo.includes('mp4')?'m4a':tipo.includes('ogg')?'ogg':'webm';
@@ -96,7 +96,7 @@ let i=0,rec=null,stream=null,chunks=[],t0=0,timer=null,audio=new Audio();
 
 // guarda no aparelho para não perder se a página recarregar
 let db=null;
-try{const r=indexedDB.open('estudio-historia-v4',1);r.onupgradeneeded=()=>r.result.createObjectStore('t');
+try{const r=indexedDB.open('estudio-historia-v5',1);r.onupgradeneeded=()=>r.result.createObjectStore('t');
 r.onsuccess=()=>{db=r.result;const tx=db.transaction('t').objectStore('t');FRASES.forEach((_,k)=>{const g=tx.get(k);g.onsuccess=()=>{if(g.result){takes[k]=g.result;render();}}});};}catch(e){}
 const salvar=(k,b)=>{try{db&&db.transaction('t','readwrite').objectStore('t').put(b,k)}catch(e){}};
 
@@ -140,7 +140,7 @@ function mostrarErro(m){const e=$('erro');e.textContent=m;e.hidden=false;}
 if(!navigator.mediaDevices||!window.MediaRecorder)mostrarErro('Este navegador não grava áudio. Abra este link no Safari ou no Chrome do celular.');
 
 $('enviar').onclick=async()=>{
-  const fs=takes.map((b,k)=>b&&new File([b],`historia4-frase-${String(NUM[k]).padStart(2,'0')}.${ext}`,{type:b.type})).filter(Boolean);
+  const fs=takes.map((b,k)=>b&&new File([b],`historia5-frase-${String(NUM[k]).padStart(2,'0')}.${ext}`,{type:b.type})).filter(Boolean);
   if(navigator.canShare&&navigator.canShare({files:fs})){
     try{await navigator.share({files:fs,title:'Gravações: A história do hebraico'});return;}catch(e){if(e.name==='AbortError')return;}
   }
