@@ -86,15 +86,15 @@ button:disabled{opacity:.4;cursor:default}
 </div>
 <script>
 const FRASES=[
-"Você ainda depende da transliteração para ler hebraico? Na primeira lição do meu curso, você já lê uma palavra de verdade.",
-"Eu sou o Moshik, sou israelense, e criei o Hebraico Fluente: uma plataforma para você aprender a ler e escrever hebraico do zero.",
+"Você olha o hebraico e só vê rabiscos? Abre a Bíblia e depende da transliteração, vai para Israel e não lê nem uma placa, quer se conectar com as suas raízes e as letras parecem um muro? Tem um jeito mais fácil.",
+"Eu sou o Moshik, sou israelense, e criei o Hebraico Fluente para você ler e escrever hebraico do zero.",
 "Primeiro, o alfabeto. As 22 letras, uma por vez, explicadas em português e com a minha voz em cada palavra.",
 "Depois, você pratica com jogos interativos: monta palavras, liga cada letra ao seu som e treina a escrita com o dedo.",
 "E tem o hebraico da vida real: no Um dia em Israel, você lê placas, o mercado e mensagens de verdade.",
-"E você não estuda sozinho: a Yael te acompanha, comemora cada acerto e te ajuda quando você erra.",
+"Depois do curso, você vai ler os versículos da Bíblia no original, viajar para Israel entendendo o que vê e se conectar com as suas raízes. E tudo começa pelas 22 letras.",
 "No pré-lançamento, o acesso completo sai por 147 reais, ou 132,30 no PIX, até 30 de novembro.",
 "Em dezembro, o curso passa a custar 297.",
-"Faz o teste grátis no link da bio e garante o seu acesso."];
+"Pegou o meu guia? Então você já leu a sua primeira palavra. Faltam 19 letras. Comenta QUERO que eu te mando o link com o preço de pré-lançamento."];
 const $=id=>document.getElementById(id);
 const tipo=['audio/mp4','audio/webm;codecs=opus','audio/webm','audio/ogg'].find(t=>window.MediaRecorder&&MediaRecorder.isTypeSupported(t))||'';
 const ext=tipo.includes('mp4')?'m4a':tipo.includes('ogg')?'ogg':'webm';
@@ -103,7 +103,7 @@ let i=0,rec=null,stream=null,chunks=[],t0=0,timer=null,audio=new Audio();
 
 // guarda no aparelho para não perder se a página recarregar
 let db=null;
-try{const r=indexedDB.open('estudio-app-v1',1);r.onupgradeneeded=()=>r.result.createObjectStore('t');
+try{const r=indexedDB.open('estudio-app-v2',1);r.onupgradeneeded=()=>r.result.createObjectStore('t');
 r.onsuccess=()=>{db=r.result;const tx=db.transaction('t').objectStore('t');FRASES.forEach((_,k)=>{const g=tx.get(k);g.onsuccess=()=>{if(g.result){takes[k]=g.result;render();}}});};}catch(e){}
 const salvar=(k,b)=>{try{db&&db.transaction('t','readwrite').objectStore('t').put(b,k)}catch(e){}};
 
@@ -147,7 +147,7 @@ function mostrarErro(m){const e=$('erro');e.textContent=m;e.hidden=false;}
 if(!navigator.mediaDevices||!window.MediaRecorder)mostrarErro('Este navegador não grava áudio. Abra este link no Safari ou no Chrome do celular.');
 
 $('enviar').onclick=async()=>{
-  const fs=takes.map((b,k)=>b&&new File([b],`app-frase-${String(k+1).padStart(2,'0')}.${ext}`,{type:b.type})).filter(Boolean);
+  const fs=takes.map((b,k)=>b&&new File([b],`app2-frase-${String(k+1).padStart(2,'0')}.${ext}`,{type:b.type})).filter(Boolean);
   if(navigator.canShare&&navigator.canShare({files:fs})){
     try{await navigator.share({files:fs,title:'Gravações: o aplicativo'});return;}catch(e){if(e.name==='AbortError')return;}
   }
