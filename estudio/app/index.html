@@ -58,7 +58,7 @@ button:disabled{opacity:.4;cursor:default}
 </style></head><body><div class="wrap">
 <div class="brand"><i>ע</i>Hebraico Fluente</div>
 <header style="display:flex;flex-direction:column;gap:10px">
-<div class="eyebrow">Estúdio · O aplicativo Hebraico Fluente</div>
+<div class="eyebrow">Estúdio · A plataforma Hebraico Fluente</div>
 <h1>Grave uma frase por vez</h1>
 <p class="muted">Leia a frase, toque em Gravar e, quando terminar, toque em Parar. Ouça e, se quiser, grave de novo. A gravação fica só no seu celular até você enviar.</p>
 <div class="dicas"><span>Cômodo pequeno, sem eco</span><span>Celular a um palmo da boca</span><span>Ritmo de aula</span></div>
@@ -80,21 +80,23 @@ button:disabled{opacity:.4;cursor:default}
 </section>
 <section style="display:flex;flex-direction:column;gap:10px">
 <button id="enviar" class="enviar" type="button" disabled>Enviar as gravações</button>
-<p class="muted" id="enviarDica">Grave as 9 frases. Depois toque aqui e salve os arquivos em Arquivos do iPhone, ou mande direto para a conversa com o Claude.</p>
+<p class="muted" id="enviarDica">Grave as 10 frases. Depois toque aqui e salve os arquivos em Arquivos do iPhone, ou mande direto para a conversa com o Claude.</p>
 <div id="links" class="links"></div>
 </section>
 </div>
 <script>
 const FRASES=[
-"Você olha o hebraico e só vê rabiscos? Abre a Bíblia e depende da transliteração, vai para Israel e não lê nem uma placa, quer se conectar com as suas raízes e as letras parecem um muro? Tem um jeito mais fácil.",
-"Eu sou o Moshik, sou israelense, e criei o Hebraico Fluente para você ler e escrever hebraico do zero.",
-"Primeiro, o alfabeto. As 22 letras, uma por vez, explicadas em português e com a minha voz em cada palavra.",
-"Depois, você pratica com jogos interativos: monta palavras, liga cada letra ao seu som e treina a escrita com o dedo.",
-"E tem o hebraico da vida real: no Um dia em Israel, você lê placas, o mercado e mensagens de verdade.",
-"Depois do curso, você vai ler os versículos da Bíblia no original, viajar para Israel entendendo o que vê e se conectar com as suas raízes. E tudo começa pelas 22 letras.",
-"No pré-lançamento, o acesso completo sai por 147 reais, ou 132,30 no PIX, até 30 de novembro.",
-"Em dezembro, o curso passa a custar 297.",
-"Pegou o meu guia? Então você já leu a sua primeira palavra. Faltam 19 letras. Comenta QUERO que eu te mando o link com o preço de pré-lançamento."];
+"Hebraico Fluente: um curso de alfabetização interativo para você ler hebraico do zero. Você aprende a letra, pratica jogando e já lê as placas de Israel.",
+"Depende da transliteração para ler a Bíblia? Vai para Israel e não entende nem uma placa? Tem um jeito mais fácil.",
+"Eu sou o Moshik, israelense, professor universitário de hebraico, e criei este curso para você.",
+"Primeiro, as vinte e duas letras. Uma por vez, explicadas em português, com a minha pronúncia.",
+"Depois, jogos interativos: caça à letra, batalha das parecidas, monte a palavra.",
+"E o hebraico da vida real: placas, estação de trem, supermercado. Um dia inteiro em Israel.",
+"No fim, você lê a Bíblia no original, viaja para Israel lendo tudo e se conecta com as suas raízes.",
+"E agora, a parte mais importante. O preço oficial é duzentos e noventa e sete reais. Mas no pré-lançamento você leva tudo por cento e quarenta e sete. Quase metade do preço. E no PIX, ainda tem dez por cento de desconto. E se não gostar, você tem sete dias para desistir e receber tudo de volta.",
+"Mas atenção: isso vale só até trinta de novembro. No dia primeiro de dezembro, o preço sobe.",
+"Comenta QUERO aqui embaixo que eu te mando o link para garantir o preço de pré-lançamento."
+];
 const $=id=>document.getElementById(id);
 const tipo=['audio/mp4','audio/webm;codecs=opus','audio/webm','audio/ogg'].find(t=>window.MediaRecorder&&MediaRecorder.isTypeSupported(t))||'';
 const ext=tipo.includes('mp4')?'m4a':tipo.includes('ogg')?'ogg':'webm';
@@ -103,7 +105,7 @@ let i=0,rec=null,stream=null,chunks=[],t0=0,timer=null,audio=new Audio();
 
 // guarda no aparelho para não perder se a página recarregar
 let db=null;
-try{const r=indexedDB.open('estudio-app-v2',1);r.onupgradeneeded=()=>r.result.createObjectStore('t');
+try{const r=indexedDB.open('estudio-app-v3',1);r.onupgradeneeded=()=>r.result.createObjectStore('t');
 r.onsuccess=()=>{db=r.result;const tx=db.transaction('t').objectStore('t');FRASES.forEach((_,k)=>{const g=tx.get(k);g.onsuccess=()=>{if(g.result){takes[k]=g.result;render();}}});};}catch(e){}
 const salvar=(k,b)=>{try{db&&db.transaction('t','readwrite').objectStore('t').put(b,k)}catch(e){}};
 
@@ -147,9 +149,9 @@ function mostrarErro(m){const e=$('erro');e.textContent=m;e.hidden=false;}
 if(!navigator.mediaDevices||!window.MediaRecorder)mostrarErro('Este navegador não grava áudio. Abra este link no Safari ou no Chrome do celular.');
 
 $('enviar').onclick=async()=>{
-  const fs=takes.map((b,k)=>b&&new File([b],`app2-frase-${String(k+1).padStart(2,'0')}.${ext}`,{type:b.type})).filter(Boolean);
+  const fs=takes.map((b,k)=>b&&new File([b],`app3-frase-${String(k+1).padStart(2,'0')}.${ext}`,{type:b.type})).filter(Boolean);
   if(navigator.canShare&&navigator.canShare({files:fs})){
-    try{await navigator.share({files:fs,title:'Gravações: o aplicativo'});return;}catch(e){if(e.name==='AbortError')return;}
+    try{await navigator.share({files:fs,title:'Gravações: a plataforma'});return;}catch(e){if(e.name==='AbortError')return;}
   }
   $('links').innerHTML='<p class="muted">Toque em cada arquivo para salvar:</p>'+fs.map(f=>`<a href="${URL.createObjectURL(f)}" download="${f.name}">${f.name}</a>`).join('');
 };
