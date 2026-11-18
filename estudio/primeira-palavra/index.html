@@ -66,7 +66,7 @@ button:disabled{opacity:.4;cursor:default}
 </header>
 <div id="erro" class="erro" hidden></div>
 <section class="palco" aria-live="polite">
-<div class="topo"><span id="contador">Frase 1 de 8</span><span id="tempo" class="tempo"></span></div>
+<div class="topo"><span id="contador">Frase 1 de 9</span><span id="tempo" class="tempo"></span></div>
 <p id="frase" class="frase"></p>
 <p id="dica" class="dica"></p>
 <p class="legenda"><b>negrito</b> = mais forte · ↗ sobe o tom · ↘ desce firme · | pausa curta · 🙂 sorria</p>
@@ -83,13 +83,13 @@ button:disabled{opacity:.4;cursor:default}
 </section>
 <section style="display:flex;flex-direction:column;gap:10px">
 <button id="enviar" class="enviar" type="button" disabled>Enviar as gravações</button>
-<p class="muted" id="enviarDica">Grave as 8 frases. Depois toque aqui e salve os arquivos em Arquivos do iPhone, ou mande direto para a conversa com o Claude.</p>
+<p class="muted" id="enviarDica">Grave as 9 frases. Depois toque aqui e salve os arquivos em Arquivos do iPhone, ou mande direto para a conversa com o Claude.</p>
 <div id="links" class="links"></div>
 </section>
 </div>
 <script>
-const FRASES=["🙂 <b>Neste vídeo</b>, | você vai ler a sua <b>primeira palavra</b> em hebraico ↗. | <b>Fica até o fim</b>!", "Eu sou o <b>Moshik</b>, | <b>israelense</b>, | professor <b>universitário</b> de hebraico ↘.", "Essa é a letra <b>Álef</b>. | Ela <b>não tem som</b>: | só <b>carrega</b> a vogal. | Esses <b>três pontinhos</b> embaixo | são a vogal <b>E</b>: | … <b>e</b>.", "Essa é a letra <b>Mem</b>, | com o som de <b>M</b>. | Embaixo, | os <b>mesmos</b> três pontinhos: | … <b>me</b>.", "E essa é a letra <b>Tav</b>, | com o som de <b>T</b>. | Sem vogal embaixo, | ela <b>fecha</b> a palavra: | … <b>t</b>.", "Agora <b>junta tudo</b> ↗… | … <b>émet</b>! | Que quer dizer <b>verdade</b> ↘.", "🙂 <b>Pronto</b>: | você acabou de <b>ler hebraico</b> ↗! | É assim no meu curso de alfabetização <b>interativo</b>: | <b>uma letra por vez</b>, | com a <b>minha voz</b> e exercícios.", "O pré-lançamento vai só até <b>trinta de novembro</b>. | 🙂 <b>Comenta QUERO</b> ↗ | que eu te mando o link!"];
-const DICAS=["Comece já com energia, como quem faz um convite. “Fica até o fim” com um sorriso, quase um desafio.", "Fale o seu nome com prazer. Uma pausinha entre cada informação, como contando nos dedos.", "Calmo, como professor na lousa. “Não tem som” devagar, porque é a surpresa. Pause antes do “e” final e diga só o som.", "Mesmo ritmo da frase anterior. Pause antes do “me” e diga só o som.", "Mesmo ritmo. Pause antes do “t” e diga só o som, curtinho, sem vogal.", "Este é o momento do vídeo. Suba o tom em “junta tudo”, pause, e diga “émet” com orgulho, como quem revela a resposta. “Verdade” firme.", "Comemore com a pessoa: ela conseguiu. Depois, mais calmo e seguro ao falar do curso.", "“Trinta de novembro” firme e claro. “Comenta QUERO” animado, como convite, sem pressa."];
+const FRASES=["🙂 <b>Neste vídeo</b>, | você vai ler a sua <b>primeira palavra</b> em hebraico ↗. | <b>Fica até o fim</b>!", "Eu sou o <b>Moshik</b>, | <b>israelense</b>, | professor <b>universitário</b> de hebraico ↘.", "Essa é a letra <b>Álef</b>. | Ela <b>não tem som</b>: | só <b>carrega</b> a vogal ↘.", "Esse <b>pontinho</b> embaixo | é a vogal <b>I</b>. | Então aqui se lê: | … <b>i</b>.", "Essa é a letra <b>Mem</b>, | com o som de <b>M</b>. | E esse <b>tracinho</b> embaixo | é a vogal <b>A</b>: | … <b>ma</b>.", "No fim, | <b>outro Álef</b>, | <b>sem som</b> ↘.", "Agora <b>junta tudo</b> ↗… | … <b>íma</b>! | Que quer dizer <b>mãe</b> ↘.", "🙂 <b>Pronto</b>: | você acabou de <b>ler hebraico</b> ↗! | É assim no meu curso de alfabetização <b>interativo</b>: | <b>uma letra por vez</b>, | com a <b>minha voz</b> e exercícios.", "O pré-lançamento vai só até <b>trinta de novembro</b>. | 🙂 <b>Comenta QUERO</b> ↗ | que eu te mando o link!"];
+const DICAS=["Comece já com energia, como quem faz um convite. “Fica até o fim” com um sorriso, quase um desafio.", "Fale o seu nome com prazer. Uma pausinha entre cada informação, como contando nos dedos.", "Calmo, como professor na lousa. “Não tem som” devagar, porque é a surpresa.", "Devagar. Pause antes do “i” final e diga só o som, curto e claro.", "Mesmo ritmo da frase anterior. Pause antes do “ma” e diga só o som.", "Curta e tranquila, como quem fecha a explicação.", "Este é o momento do vídeo. Suba o tom em “junta tudo”, pause, e diga “íma” com orgulho, como quem revela a resposta. “Mãe” com carinho.", "Comemore com a pessoa: ela conseguiu. Depois, mais calmo e seguro ao falar do curso.", "“Trinta de novembro” firme e claro. “Comenta QUERO” animado, como convite, sem pressa."];
 const $=id=>document.getElementById(id);
 const tipo=['audio/mp4','audio/webm;codecs=opus','audio/webm','audio/ogg'].find(t=>window.MediaRecorder&&MediaRecorder.isTypeSupported(t))||'';
 const ext=tipo.includes('mp4')?'m4a':tipo.includes('ogg')?'ogg':'webm';
@@ -98,7 +98,7 @@ let i=0,rec=null,stream=null,chunks=[],t0=0,timer=null,audio=new Audio();
 
 // guarda no aparelho para não perder se a página recarregar
 let db=null;
-try{const r=indexedDB.open('estudio-primeira-palavra-v2',1);r.onupgradeneeded=()=>r.result.createObjectStore('t');
+try{const r=indexedDB.open('estudio-primeira-palavra-v1',1);r.onupgradeneeded=()=>r.result.createObjectStore('t');
 r.onsuccess=()=>{db=r.result;const tx=db.transaction('t').objectStore('t');FRASES.forEach((_,k)=>{const g=tx.get(k);g.onsuccess=()=>{if(g.result){takes[k]=g.result;render();}}});};}catch(e){}
 const salvar=(k,b)=>{try{db&&db.transaction('t','readwrite').objectStore('t').put(b,k)}catch(e){}};
 
