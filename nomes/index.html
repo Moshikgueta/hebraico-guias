@@ -1,0 +1,161 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Nomes em Hebraico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600&family=Instrument+Sans:wght@400;600&family=Noto+Serif+Hebrew:wght@600&display=swap">
+<style>
+/* Layout: uma coluna estreita de leitura no celular, como uma lição do curso; cartões só onde há algo para tocar. */
+:root{
+  --navy:#0e3b43; --teal:#12665c; --gold:#e6c98d; --gold-ink:#8a6520;
+  --bg:#f3f0e9; --surface:#ffffff; --fg:#0e3b43; --muted:#4f5a57; --line:rgba(14,59,67,.12);
+  --chip:#d7ece8; --chip-ink:#12665c; --ok:#1f7a4d; --ok-bg:#dcefe4; --bad:#a3392b; --bad-bg:#f6e0dc;
+  --band:#0e3b43; --band-fg:#fbf9f5; --band-accent:#e6c98d;
+  --f-display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --f-body:"Instrument Sans",ui-sans-serif,system-ui,sans-serif;
+  --f-he:"Noto Serif Hebrew","Noto Sans Hebrew","Times New Roman",serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0b2328; --surface:#123138; --fg:#eef3f1; --muted:#a9bbb7; --line:rgba(143,214,200,.18);
+  --teal:#7fdaca; --gold-ink:#e6c98d; --chip:#1d4a50; --chip-ink:#a8e6da;
+  --ok:#8fdcb0; --ok-bg:#173d2c; --bad:#f2a99d; --bad-bg:#45231e;
+  --band:#123138; --band-fg:#eef3f1; --band-accent:#e6c98d; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0b2328; --surface:#123138; --fg:#eef3f1; --muted:#a9bbb7; --line:rgba(143,214,200,.18);
+  --teal:#7fdaca; --gold-ink:#e6c98d; --chip:#1d4a50; --chip-ink:#a8e6da;
+  --ok:#8fdcb0; --ok-bg:#173d2c; --bad:#f2a99d; --bad-bg:#45231e;
+  --band:#123138; --band-fg:#eef3f1; --band-accent:#e6c98d; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:17px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:640px;margin:0 auto;padding-block:28px 56px;display:flex;flex-direction:column;gap:44px}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;letter-spacing:-.03em;text-wrap:balance;margin:0}
+p{margin:0}
+.he{font-family:var(--f-he);font-weight:600;unicode-bidi:isolate}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:600;font-size:17px}
+.brand i{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--navy);color:#8fd6c8;font-style:normal;font-family:var(--f-he);font-size:20px}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink)}
+header{display:flex;flex-direction:column;gap:14px}
+header h1{font-size:clamp(34px,8vw,48px);line-height:1.02}
+header h1 span{color:var(--teal)}
+.lead{color:var(--muted);max-width:60ch}
+.steps{display:flex;flex-wrap:wrap;gap:8px}
+.steps span{font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--chip);color:var(--chip-ink)}
+section{display:flex;flex-direction:column;gap:16px}
+section>h2{font-size:28px;line-height:1.1}
+.hint{font-size:15px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+.card{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:18px;padding:16px 18px;text-align:start;font:inherit;cursor:pointer;
+  display:flex;flex-direction:column;gap:2px;min-height:132px;transition:border-color .15s ease}
+.card:hover{border-color:var(--teal)}
+.card:focus-visible,.opt:focus-visible,.btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.card .he{font-size:44px;line-height:1.35;align-self:flex-end}
+.card .tr{font-family:var(--f-display);font-weight:600;font-size:22px;color:var(--teal)}
+.card .pt{font-weight:600;font-size:18px}
+.card .pt[hidden]{display:none}
+.card .tap{font-size:14px;color:var(--muted)}
+.card .soa{font-size:14px;color:var(--gold-ink);font-weight:600}
+.rule{border-radius:22px;background:var(--band);color:var(--band-fg);padding:24px 22px;display:flex;flex-direction:column;gap:16px}
+.rule h2{font-size:26px;line-height:1.1}
+.rule h2 b{color:var(--band-accent);font-weight:600}
+.rule p{opacity:.9}
+.ex{display:flex;flex-direction:column}
+.ex div{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 0;border-top:1px solid rgba(251,249,245,.16)}
+.ex .he{font-size:32px;line-height:1.3;color:var(--band-accent)}
+.ex .l{display:flex;flex-direction:column;min-width:0}
+.ex .l b{font-family:var(--f-display);font-weight:600;font-size:20px}
+.ex .l small{font-size:15px;opacity:.85}
+.quiz{display:flex;flex-direction:column;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px 20px}
+.qhead{display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+.bar{height:6px;border-radius:999px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--teal);transition:width .3s ease}
+.q{font-family:var(--f-display);font-weight:600;font-size:22px;line-height:1.2}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{appearance:none;font:inherit;text-align:start;border:2px solid var(--line);background:transparent;color:var(--fg);border-radius:14px;padding:12px 16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.opt:hover:not(:disabled){border-color:var(--teal)}
+.opt .he{font-size:26px;line-height:1.3}
+.opt b{font-weight:600}
+.opt.ok{border-color:var(--ok);background:var(--ok-bg)}
+.opt.bad{border-color:var(--bad);background:var(--bad-bg)}
+.opt:disabled{cursor:default}
+.fb{font-size:15px;min-height:1.5em}
+.btn{appearance:none;border:0;font:inherit;font-weight:600;font-size:17px;border-radius:999px;padding:14px 24px;cursor:pointer;background:var(--navy);color:#fbf9f5;align-self:flex-start;text-decoration:none;display:inline-block}
+:root[data-theme="dark"] .btn{background:var(--gold);color:#0e3b43}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn{background:var(--gold);color:#0e3b43}}
+.done{display:flex;flex-direction:column;gap:12px}
+.done h3{font-size:26px}
+.cta{border-radius:22px;border:2px solid var(--gold);padding:24px 22px;display:flex;flex-direction:column;gap:14px;background:var(--surface)}
+.cta h2{font-size:26px;line-height:1.12}
+.cta .btn{background:var(--gold);color:#0e3b43}
+.cta small{color:var(--muted);font-size:14px}
+footer{font-size:13px;color:var(--muted);text-align:center}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>
+.card{cursor:pointer}
+.card .nm{font-family:var(--f-display);font-weight:600;font-size:24px}
+.card .sg{font-weight:600;font-size:17px;color:var(--fg)}
+.card .sg[hidden]{display:none}
+.preco{display:flex;flex-direction:column;gap:2px;font-weight:600}
+.preco b{font-family:var(--f-display);font-size:30px}
+.sec{background:transparent!important;color:var(--fg)!important;border:2px solid var(--line)}
+</style>
+</head><body>
+
+<main class="wrap">
+  <header>
+    <div class="brand"><i aria-hidden="true">ע</i>Hebraico Fluente</div>
+    <span class="eyebrow">Prévia grátis · nomes em hebraico</span>
+    <h1>Mais 12 <span>nomes</span> que vêm do hebraico</h1>
+    <p class="lead">Nomes que todo brasileiro conhece, escritos no original. Leia o nome, tente adivinhar o significado e toque no cartão para ver.</p>
+  </header>
+
+  <section aria-labelledby="t1">
+    <h2 id="t1">Adivinhe o significado</h2>
+    <p class="hint">Toque em cada cartão.</p>
+    <div class="grid" id="cards"></div>
+  </section>
+
+  <section aria-labelledby="t2" class="rule">
+    <h2 id="t2">Curiosidade: <b>Tiago e Jacó</b> são o mesmo nome</h2>
+    <p>Em latim, Jacó virou Iacobus, depois Iago. "Sant'Iago" se juntou e virou Santiago, e daí Tiago. Com Isabel aconteceu algo parecido: ela vem de Elishéva, o mesmo nome que deu Elisabete.</p>
+  </section>
+
+  <section class="cta" aria-labelledby="t3">
+    <span class="eyebrow">Próximo passo</span>
+    <h2 id="t3">Quer ler o seu nome no original, letra por letra?</h2>
+    <p>No curso de alfabetização interativo do Hebraico Fluente você aprende a ler hebraico do zero, uma letra por vez, com a pronúncia gravada por um professor israelense, em cerca de 10 minutos por dia.</p>
+    <p class="preco"><b>R$ 147 ou R$ 132,30 no PIX</b><span>Pré-lançamento só até 30/11. Em 01/12 o curso passa para R$ 297.</span></p>
+    <a class="btn" href="https://hebraicofluente.com.br/checkout/alfabetizacao/?utm_source=instagram&amp;utm_campaign=guia-nomes" target="_blank" rel="noopener">Quero entrar no curso</a>
+    <a class="btn sec" href="https://hebraicofluente.com.br/dm?utm_campaign=guia-nomes" target="_blank" rel="noopener">Prefiro fazer o teste grátis antes</a>
+    <small>7 dias para desistir e receber tudo de volta.</small>
+  </section>
+
+  <footer>Hebraico Fluente · @hebraicofluente</footer>
+</main>
+
+<script>
+const N=[
+  {nm:'José',he:'יוֹסֵף',tr:'Yosef',sg:'Que Deus acrescente (Gênesis 30:24)'},
+  {nm:'Manuel',he:'עִמָּנוּאֵל',tr:'Imanuél',sg:'Deus está conosco (Isaías 7:14)'},
+  {nm:'Tiago e Jacó',he:'יַעֲקֹב',tr:'Yaakóv',sg:'Ligado a calcanhar: na Bíblia, Jacó nasce segurando o calcanhar do irmão'},
+  {nm:'Isabel',he:'אֱלִישֶׁבַע',tr:'Elishéva',sg:'Meu Deus é juramento'},
+  {nm:'Sara',he:'שָׂרָה',tr:'Sará',sg:'Princesa'},
+  {nm:'Raquel',he:'רָחֵל',tr:'Rachél',sg:'Ovelha'},
+  {nm:'Débora',he:'דְּבוֹרָה',tr:'Devorá',sg:'Abelha'},
+  {nm:'Benjamim',he:'בִּנְיָמִין',tr:'Binyamín',sg:'Filho da mão direita'},
+  {nm:'Natanael',he:'נְתַנְאֵל',tr:'Netanél',sg:'Deus deu'},
+  {nm:'Noemi',he:'נָעֳמִי',tr:'Naomí',sg:'Agradável. Em Rute, ela pede para ser chamada de Mara, amarga'},
+  {nm:'Abel',he:'הֶבֶל',tr:'Hével',sg:'Sopro'},
+  {nm:'Eva',he:'חַוָּה',tr:'Chavá',sg:'Ligado a vida: na Bíblia, a mãe de todos os viventes'}
+];
+const box=document.getElementById('cards');
+N.forEach(n=>{
+  const b=document.createElement('button'); b.className='card'; b.type='button'; b.setAttribute('aria-expanded','false');
+  b.innerHTML='<span class="nm"></span><span class="he" lang="he" dir="rtl"></span><span class="tr"></span><span class="sg" hidden></span><span class="tap">Toque para ver</span>';
+  b.querySelector('.nm').textContent=n.nm; b.querySelector('.he').textContent=n.he; b.querySelector('.tr').textContent=n.tr; b.querySelector('.sg').textContent=n.sg;
+  b.addEventListener('click',()=>{const s=b.querySelector('.sg'),t=b.querySelector('.tap');const ab=s.hidden;s.hidden=!ab;t.hidden=ab;b.setAttribute('aria-expanded',String(ab));});
+  box.appendChild(b);
+});
+</script>
+</body></html>
