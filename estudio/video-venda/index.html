@@ -40,12 +40,22 @@ h2{font-family:'Bricolage Grotesque';font-size:22px;margin:24px 0 10px}
 #tpNav .nx{background:var(--mint);color:var(--navy)}
 #tpRec{position:absolute;z-index:3;right:16px;top:calc(env(safe-area-inset-top) + 64px);background:#B3261E;color:#fff;font-weight:600;font-size:14px;padding:6px 12px;border-radius:999px;display:none}
 .hidden{display:none}
+.bl{border-radius:20px;padding:18px 18px 16px;margin-top:14px;border-left:8px solid}
+.bl.c{background:#EAF0F1;border-color:#0E3B43}.bl.v{background:#F7EFDF;border-color:#B8862F}.bl.f{background:#fff;border:2px dashed #E4E0D6;border-left:8px solid #1F8A7D}
+.bl .k{font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#5F6A66;display:flex;justify-content:space-between}
+.bl .fala{font-family:'Bricolage Grotesque';font-size:26px;line-height:1.25;margin-top:8px;letter-spacing:-.01em}
+.bl .tela{margin-top:10px;font-size:15px;color:#12665C;font-weight:600}
+.bl .como{margin-top:6px;font-size:15px;color:#5F6A66;line-height:1.45}
 </style>
 <header><small>HEBRAICO FLUENTE · ESTÚDIO</small><h1>Vídeo de venda do curso</h1>
 <p>Parte 1 e Parte 3: você na câmera (teleprompter). Parte 2: só a sua voz, frase por frase. No fim, mande tudo para o Claude editar.</p></header>
-<div class=tabs><button id=t1 class=on>🎥 Câmera</button><button id=t2>🎙️ Narração</button></div>
+<div class=tabs><button id=t0 class=on>📜 Roteiro</button><button id=t1>🎥 Câmera</button><button id=t2>🎙️ Narração</button></div>
 
-<section id=s1>
+<section id=s0>
+ <div class=dica>O vídeo inteiro, na ordem. <b style="color:#0E3B43">Azul</b> = você na câmera · <b style="color:#B8862F">Dourado</b> = só a sua voz · <b>Verde</b> = a tela que aparece.</div>
+ <div id=rot></div>
+</section>
+<section id=s1 class=hidden>
  <div class=dica><b>Como gravar:</b> celular em pé, na altura dos olhos, de frente para a janela, com o fone com fio. Toque em <b>Abrir teleprompter</b>: o texto fica grande no topo, perto da câmera, e você pode gravar ali mesmo com a câmera da frente. Grave as frases na ordem. O <b>gancho B</b> é opcional, para testarmos qual prende mais.</div>
  <div id=lista1></div>
  <button class="btn" id=abrir>▶ Abrir teleprompter</button>
@@ -71,7 +81,7 @@ const CAM=[
  ['Gancho A · recomendado','Você lê a Bíblia há anos, mas nunca leu uma palavra dela no original?','Segure uma Bíblia ou uma folha em hebraico. Tom de pergunta sincera, olhando na lente.'],
  ['Gancho A · continuação','Ou sonha em viajar para Israel, mas tem medo de chegar lá e não entender nada?','Leve sorriso. Pausa curta no fim da pergunta.'],
  ['A solução','A solução cabe no seu celular.','Mostre o celular com o app aberto. Tom de boa notícia.'],
- ['Quem sou','Eu sou o Moshik, professor israelense, e criei um aplicativo para você aprender a ler hebraico do zero, em português. Olha só.','No "olha só", aponte para o celular: aqui o vídeo corta para o app.'],
+ ['Quem sou','Eu sou o Moshik, professor israelense, e criei uma plataforma para você aprender a ler hebraico do zero, em português. Olha só.','No "olha só", aponte para o celular: aqui o vídeo corta para o app.'],
  ['Gancho B · opcional','Se você nunca conseguiu ler hebraico, a culpa não é sua.','Grave para testarmos. Pausa de 1 segundo depois de "não é sua".'],
  ['Parte 3 · condições','Até dia 30 de novembro, custa 147 reais. Depois, vai custar 297. E se não gostar, você tem 7 dias para desistir.','Mais sério e próximo. Números devagar.'],
  ['Parte 3 · chamada','Comenta QUERO, que eu te mando o link.','Aponte para baixo. Sorria no fim.']];
@@ -82,9 +92,22 @@ const VO=[
  ['Narração 4','E pratica com jogos.'],
  ['Narração 5','Tudo em português. Só 10 minutos por dia.']];
 const $=id=>document.getElementById(id);
+const ROT=[
+ ['c','0 a 3 s · Gancho','Você lê a Bíblia há anos, mas nunca leu uma palavra dela no original?','Bíblia ou folha em hebraico na mão','Pergunta sincera, olhando na lente.'],
+ ['c','3 a 6 s · Gancho','Ou sonha em viajar para Israel, mas tem medo de chegar lá e não entender nada?','Você na câmera','Leve sorriso, pausa curta no fim.'],
+ ['c','6 a 8 s · Solução','A solução cabe no seu celular.','Você mostra o celular com a plataforma aberta','Tom de boa notícia.'],
+ ['c','8 a 12 s · Quem sou','Eu sou o Moshik, professor israelense, e criei uma plataforma para você aprender a ler hebraico do zero, em português. Olha só.','Selo: 🇮🇱 Professor israelense','No "olha só", aponte para o celular.'],
+ ['v','12 a 16 s · Narração 1','Você aprende as 22 letras do zero, uma por vez, para ler a Bíblia e as placas de Israel.','Tela: o mapa das letras','Energia, sorrindo.'],
+ ['v','16 a 18 s · Narração 2','Ouve cada letra na minha voz.','Tela: uma lição, tocando em "Ouvir"',''],
+ ['v','18 a 20 s · Narração 3','Escreve com o dedo.','Tela: a escrita, traçando uma letra',''],
+ ['v','20 a 22 s · Narração 4','E pratica com jogos.','Tela: um jogo ou exercício',''],
+ ['v','22 a 25 s · Narração 5','Tudo em português. Só 10 minutos por dia.','Tela: o mapa com o progresso',''],
+ ['c','25 a 30 s · Condições','Até dia 30 de novembro, custa 147 reais. Depois, vai custar 297. E se não gostar, você tem 7 dias para desistir.','Cartão: R$ 147 só até 30/11 · depois R$ 297','Mais sério e próximo. Números devagar.'],
+ ['c','30 a 33 s · Chamada','Comenta QUERO, que eu te mando o link.','Comente QUERO 👇','Aponte para baixo. Sorria.']];
+$('rot').innerHTML=ROT.map(r=>`<div class="bl ${r[0]}"><div class=k><span>${r[1]}</span><span>${r[0]==='c'?'🎥 câmera':'🎙️ voz'}</span></div><div class=fala>"${r[2]}"</div><div class=tela>📱 ${r[3]}</div>${r[4]?`<div class=como>${r[4]}</div>`:''}</div>`).join('');
+
 // abas
-$('t1').onclick=()=>{$('t1').classList.add('on');$('t2').classList.remove('on');$('s1').classList.remove('hidden');$('s2').classList.add('hidden')};
-$('t2').onclick=()=>{$('t2').classList.add('on');$('t1').classList.remove('on');$('s2').classList.remove('hidden');$('s1').classList.add('hidden')};
+['0','1','2'].forEach(n=>$('t'+n).onclick=()=>{['0','1','2'].forEach(m=>{$('t'+m).classList.toggle('on',m===n);$('s'+m).classList.toggle('hidden',m!==n)})});
 $('lista1').innerHTML=CAM.map((c,i)=>`<div class=card><div class=lb>${i+1} · ${c[0]}</div><div class=tx>${c[1]}</div><div class=co>${c[2]}</div></div>`).join('');
 // IndexedDB
 let db;const abre=new Promise(r=>{const q=indexedDB.open('estudio-video-venda',1);q.onupgradeneeded=()=>q.result.createObjectStore('f');q.onsuccess=()=>{db=q.result;r()};q.onerror=()=>r()});
