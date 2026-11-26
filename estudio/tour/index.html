@@ -81,7 +81,7 @@ const CAM=[
  ['Gancho A · recomendado','Antes de comprar, você quer ver a plataforma por dentro? Vem comigo.','Mostre o celular com a plataforma aberta, perto do rosto. Tom de quem vai contar um segredo.'],
  ['Gancho B · opcional','Eu vou abrir a minha plataforma de hebraico pra você ver tudo o que tem lá dentro.','Grave para testarmos. Já comece com o celular na mão.'],
  ['Final · condições','Tudo isso por 147 reais, e no PIX ainda tem 10% de desconto. Só até segunda. Depois vai pra 297.','Mais sério e próximo. Números devagar.'],
- ['Final · chamada','Comenta QUERO que eu te mando o link.','Aponte para baixo. Sorria no fim.']];
+ ['Final · chamada','Comenta QUERO que eu te mando o link. E envia esse vídeo pra quem vai aprender hebraico com você.','Aponte para baixo no QUERO. Sorria no fim.']];
 const VO=[
  ['Narração 1 · caminho','Um caminho do zero: as 22 letras, uma por vez.'],
  ['Narração 2 · pronúncia','Cada letra e cada palavra com a minha voz. Pronúncia de israelense.'],
@@ -97,7 +97,7 @@ const ROT=[
  ['v','14 a 19 s · Narração 4','Tem jogos pra treinar as letras que você já aprendeu.','Tela: Caça à letra e Batalha das parecidas',''],
  ['v','19 a 24 s · Narração 5','E hebraico de verdade: placas fotografadas em Israel. Você descobre quais palavras já consegue ler.','Tela: Um dia em Israel e a placa de Jerusalém',''],
  ['c','24 a 29 s · Condições','Tudo isso por 147 reais, e no PIX ainda tem 10% de desconto. Só até segunda. Depois vai pra 297.','Cartão: R$ 147 · PIX R$ 132,30 · depois R$ 297','Números devagar.'],
- ['c','29 a 31 s · Chamada','Comenta QUERO que eu te mando o link.','Comente QUERO 👇','Aponte para baixo. Sorria.']];
+ ['c','29 a 33 s · Chamada','Comenta QUERO que eu te mando o link. E envia esse vídeo pra quem vai aprender hebraico com você.','Comente QUERO 👇 · 📤 Envie para quem vai aprender com você','Aponte para baixo no QUERO. Sorria no fim.']];
 $('rot').innerHTML=ROT.map(r=>`<div class="bl ${r[0]}"><div class=k><span>${r[1]}</span><span>${r[0]==='c'?'🎥 câmera':'🎙️ voz'}</span></div><div class=fala>"${r[2]}"</div><div class=tela>📱 ${r[3]}</div>${r[4]?`<div class=como>${r[4]}</div>`:''}</div>`).join('');
 
 // abas
