@@ -1,0 +1,155 @@
+<!doctype html><html lang=pt-BR><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Estúdio · tour da plataforma</title>
+<link rel=preconnect href=https://fonts.googleapis.com><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600&family=Instrument+Sans:wght@400;600&family=Noto+Sans+Hebrew:wght@700&display=swap" rel=stylesheet>
+<style>
+:root{--navy:#0E3B43;--teal:#12665C;--mint:#8FD6C8;--gold:#B8862F;--cream:#FBF9F5;--sand:#F3F0E9;--ink:#1B211F;--mut:#5F6A66;--line:#E4E0D6}
+*{box-sizing:border-box;margin:0}
+body{font-family:'Instrument Sans',system-ui;background:var(--cream);color:var(--ink);-webkit-text-size-adjust:100%}
+header{background:var(--navy);color:#fff;padding:22px 18px 26px}
+header small{color:var(--mint);font-weight:600;letter-spacing:.12em;font-size:12px}
+h1{font-family:'Bricolage Grotesque';font-size:28px;letter-spacing:-.02em;margin-top:6px}
+header p{color:#DCEAE7;margin-top:8px;font-size:15px;line-height:1.45}
+.tabs{display:flex;gap:8px;padding:14px 16px;position:sticky;top:0;background:var(--cream);z-index:5;border-bottom:1px solid var(--line)}
+.tabs button{flex:1;min-height:46px;border-radius:12px;border:2px solid var(--line);background:#fff;font:600 15px 'Instrument Sans';color:var(--ink)}
+.tabs button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+section{padding:18px 16px 60px;max-width:760px;margin:0 auto}
+.dica{background:#E4F1EE;border-radius:14px;padding:14px 16px;font-size:15px;line-height:1.5;color:#1d3b36}
+.dica b{color:var(--teal)}
+h2{font-family:'Bricolage Grotesque';font-size:22px;margin:24px 0 10px}
+.card{background:#fff;border:2px solid var(--line);border-radius:18px;padding:16px;margin-top:12px}
+.card .lb{font-weight:600;font-size:12px;letter-spacing:.1em;color:var(--gold);text-transform:uppercase}
+.card .tx{font-size:20px;line-height:1.4;margin-top:6px}
+.card .co{font-size:14px;color:var(--mut);margin-top:8px;line-height:1.45}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 18px;border-radius:12px;border:0;font:600 16px 'Instrument Sans';background:var(--navy);color:#fff;margin:10px 8px 0 0}
+.btn.sec{background:#fff;color:var(--navy);border:2px solid var(--line)}
+.btn.rec{background:#B3261E}
+.btn[disabled]{opacity:.4}
+.st{font-size:14px;color:var(--mut);margin-top:8px}
+.ok{color:var(--teal);font-weight:600}
+/* teleprompter */
+#tp{position:fixed;inset:0;background:#000;color:#fff;z-index:50;display:none;flex-direction:column}
+#tp video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scaleX(-1);opacity:.35}
+#tpTop{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:calc(env(safe-area-inset-top) + 10px) 14px 8px;gap:8px}
+#tpTop button{min-height:44px;padding:0 14px;border-radius:10px;border:0;font:600 15px 'Instrument Sans';background:rgba(255,255,255,.15);color:#fff}
+#tpTop .rec{background:#B3261E}
+#tpTxt{position:relative;z-index:2;flex:0 0 auto;padding:8px 22px 0;font-family:'Bricolage Grotesque';font-size:clamp(34px,9vw,64px);line-height:1.15;letter-spacing:-.01em;text-shadow:0 2px 12px #000}
+#tpTxt .he{font-family:'Noto Sans Hebrew';direction:rtl;unicode-bidi:isolate;color:#E6C98D}
+#tpCo{position:relative;z-index:2;padding:14px 22px;color:var(--mint);font-size:17px;line-height:1.4}
+#tpNav{position:absolute;z-index:2;left:0;right:0;bottom:calc(env(safe-area-inset-bottom) + 14px);display:flex;gap:10px;padding:0 14px}
+#tpNav button{flex:1;min-height:58px;border-radius:14px;border:0;font:600 18px 'Instrument Sans';background:rgba(255,255,255,.18);color:#fff}
+#tpNav .nx{background:var(--mint);color:var(--navy)}
+#tpRec{position:absolute;z-index:3;right:16px;top:calc(env(safe-area-inset-top) + 64px);background:#B3261E;color:#fff;font-weight:600;font-size:14px;padding:6px 12px;border-radius:999px;display:none}
+.hidden{display:none}
+.bl{border-radius:20px;padding:18px 18px 16px;margin-top:14px;border-left:8px solid}
+.bl.c{background:#EAF0F1;border-color:#0E3B43}.bl.v{background:#F7EFDF;border-color:#B8862F}.bl.f{background:#fff;border:2px dashed #E4E0D6;border-left:8px solid #1F8A7D}
+.bl .k{font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#5F6A66;display:flex;justify-content:space-between}
+.bl .fala{font-family:'Bricolage Grotesque';font-size:26px;line-height:1.25;margin-top:8px;letter-spacing:-.01em}
+.bl .tela{margin-top:10px;font-size:15px;color:#12665C;font-weight:600}
+.bl .como{margin-top:6px;font-size:15px;color:#5F6A66;line-height:1.45}
+</style>
+<header><small>HEBRAICO FLUENTE · ESTÚDIO</small><h1>Tour pela plataforma</h1>
+<p>Começo e fim: você na câmera (teleprompter). Meio: só a sua voz, frase por frase, por cima das telas da plataforma. No fim, mande tudo para o Claude editar.</p></header>
+<div class=tabs><button id=t0 class=on>📜 Roteiro</button><button id=t1>🎥 Câmera</button><button id=t2>🎙️ Narração</button></div>
+
+<section id=s0>
+ <div class=dica>O vídeo inteiro, na ordem. <b style="color:#0E3B43">Azul</b> = você na câmera · <b style="color:#B8862F">Dourado</b> = só a sua voz · <b>Verde</b> = a tela que aparece.</div>
+ <div id=rot></div>
+</section>
+<section id=s1 class=hidden>
+ <div class=dica><b>Como gravar:</b> celular em pé, na altura dos olhos, de frente para a janela, com o fone com fio. Toque em <b>Abrir teleprompter</b>: o texto fica grande no topo, perto da câmera, e você pode gravar ali mesmo com a câmera da frente. Grave as frases na ordem. O <b>gancho B</b> é opcional, para testarmos qual prende mais. Segure o celular com a plataforma aberta na outra mão.</div>
+ <div id=lista1></div>
+ <button class="btn" id=abrir>▶ Abrir teleprompter</button>
+ <h2>Vídeos gravados</h2><div id=vids class=st>Nenhum ainda.</div>
+</section>
+
+<section id=s2 class=hidden>
+ <div class=dica><b>Narração:</b> lugar silencioso, celular a uns 20 cm da boca, sem o fone. Grave cada frase, ouça e, se não gostar, grave de novo. Fale com energia e sorrindo: o sorriso aparece na voz.</div>
+ <div id=lista2></div>
+ <button class="btn" id=baixarTudo>⬇ Enviar todas as narrações</button>
+ <div class=st id=stTudo></div>
+</section>
+
+<div id=tp><video id=cam playsinline muted></video>
+ <div id=tpTop><button id=fechar>✕ Fechar</button><span id=tpN style="font-weight:600"></span><button id=gravarV class=rec>● Gravar</button></div>
+ <div id=tpRec>● GRAVANDO</div>
+ <div id=tpTxt></div><div id=tpCo></div>
+ <div id=tpNav><button id=ant>← Anterior</button><button id=prox class=nx>Próxima →</button></div>
+</div>
+
+<script>
+const CAM=[
+ ['Gancho A · recomendado','Antes de comprar, você quer ver a plataforma por dentro? Vem comigo.','Mostre o celular com a plataforma aberta, perto do rosto. Tom de quem vai contar um segredo.'],
+ ['Gancho B · opcional','Eu vou abrir a minha plataforma de hebraico pra você ver tudo o que tem lá dentro.','Grave para testarmos. Já comece com o celular na mão.'],
+ ['Final · condições','Tudo isso por 147 reais, e no PIX ainda tem 10% de desconto. Só até segunda. Depois vai pra 297.','Mais sério e próximo. Números devagar.'],
+ ['Final · chamada','Comenta QUERO que eu te mando o link.','Aponte para baixo. Sorria no fim.']];
+const VO=[
+ ['Narração 1 · caminho','Um caminho do zero: as 22 letras, uma por vez.'],
+ ['Narração 2 · pronúncia','Cada letra e cada palavra com a minha voz. Pronúncia de israelense.'],
+ ['Narração 3 · cursiva','Você aprende a cursiva, a letra que a gente usa à mão em Israel.'],
+ ['Narração 4 · jogos','Tem jogos pra treinar as letras que você já aprendeu.'],
+ ['Narração 5 · vida real','E hebraico de verdade: placas fotografadas em Israel. Você descobre quais palavras já consegue ler.']];
+const $=id=>document.getElementById(id);
+const ROT=[
+ ['c','0 a 3 s · Gancho','Antes de comprar, você quer ver a plataforma por dentro? Vem comigo.','Você com o celular aberto na mão','Tom de segredo, olhando na lente.'],
+ ['v','3 a 6 s · Narração 1','Um caminho do zero: as 22 letras, uma por vez.','Tela: o mapa das letras','Energia, sorrindo.'],
+ ['v','6 a 10 s · Narração 2','Cada letra e cada palavra com a minha voz. Pronúncia de israelense.','Tela: "Ouça e repita", com a onda de som',''],
+ ['v','10 a 14 s · Narração 3','Você aprende a cursiva, a letra que a gente usa à mão em Israel.','Tela: impressa x cursiva e o traçado',''],
+ ['v','14 a 19 s · Narração 4','Tem jogos pra treinar as letras que você já aprendeu.','Tela: Caça à letra e Batalha das parecidas',''],
+ ['v','19 a 24 s · Narração 5','E hebraico de verdade: placas fotografadas em Israel. Você descobre quais palavras já consegue ler.','Tela: Um dia em Israel e a placa de Jerusalém',''],
+ ['c','24 a 29 s · Condições','Tudo isso por 147 reais, e no PIX ainda tem 10% de desconto. Só até segunda. Depois vai pra 297.','Cartão: R$ 147 · PIX R$ 132,30 · depois R$ 297','Números devagar.'],
+ ['c','29 a 31 s · Chamada','Comenta QUERO que eu te mando o link.','Comente QUERO 👇','Aponte para baixo. Sorria.']];
+$('rot').innerHTML=ROT.map(r=>`<div class="bl ${r[0]}"><div class=k><span>${r[1]}</span><span>${r[0]==='c'?'🎥 câmera':'🎙️ voz'}</span></div><div class=fala>"${r[2]}"</div><div class=tela>📱 ${r[3]}</div>${r[4]?`<div class=como>${r[4]}</div>`:''}</div>`).join('');
+
+// abas
+['0','1','2'].forEach(n=>$('t'+n).onclick=()=>{['0','1','2'].forEach(m=>{$('t'+m).classList.toggle('on',m===n);$('s'+m).classList.toggle('hidden',m!==n)})});
+$('lista1').innerHTML=CAM.map((c,i)=>`<div class=card><div class=lb>${i+1} · ${c[0]}</div><div class=tx>${c[1]}</div><div class=co>${c[2]}</div></div>`).join('');
+// IndexedDB
+let db;const abre=new Promise(r=>{const q=indexedDB.open('estudio-tour',1);q.onupgradeneeded=()=>q.result.createObjectStore('f');q.onsuccess=()=>{db=q.result;r()};q.onerror=()=>r()});
+const put=(k,v)=>new Promise(r=>{try{const t=db.transaction('f','readwrite');t.objectStore('f').put(v,k);t.oncomplete=r;t.onerror=r}catch(e){r()}});
+const get=k=>new Promise(r=>{try{const q=db.transaction('f').objectStore('f').get(k);q.onsuccess=()=>r(q.result);q.onerror=()=>r()}catch(e){r()}});
+const keys=()=>new Promise(r=>{try{const q=db.transaction('f').objectStore('f').getAllKeys();q.onsuccess=()=>r(q.result);q.onerror=()=>r([])}catch(e){r([])}});
+const ext=t=>/mp4/.test(t)?'mp4':/webm/.test(t)?'webm':/ogg/.test(t)?'ogg':'m4a';
+const tipoA=()=>['audio/mp4','audio/webm;codecs=opus','audio/webm'].find(t=>window.MediaRecorder&&MediaRecorder.isTypeSupported(t))||'';
+const tipoV=()=>['video/mp4','video/webm;codecs=vp9,opus','video/webm'].find(t=>window.MediaRecorder&&MediaRecorder.isTypeSupported(t))||'';
+async function enviar(arqs){ if(navigator.canShare&&navigator.canShare({files:arqs})){try{await navigator.share({files:arqs,title:'Tour da plataforma'});return}catch(e){if(e.name==='AbortError')return}}
+ arqs.forEach(f=>{const a=document.createElement('a');a.href=URL.createObjectURL(f);a.download=f.name;a.click()})}
+// narração
+async function montaVO(){await abre;$('lista2').innerHTML=VO.map((v,i)=>`<div class=card id=vo${i}><div class=lb>${v[0]}</div><div class=tx>${v[1]}</div>
+ <button class="btn rec" data-i=${i} data-a=rec>● Gravar</button><button class="btn sec" data-i=${i} data-a=play disabled>▶ Ouvir</button><button class="btn sec" data-i=${i} data-a=env disabled>⬆ Enviar</button><div class=st></div></div>`).join('');
+ for(let i=0;i<VO.length;i++){const b=await get('vo'+i); if(b) marca(i,b)}}
+function marca(i,b){const c=$('vo'+i);c.querySelectorAll('[data-a=play],[data-a=env]').forEach(x=>x.disabled=false);c.querySelector('.st').innerHTML=`<span class=ok>✓ Gravada</span> · ${(b.size/1024|0)} KB`}
+let rec=null,chunks=[],recI=-1,streamA=null;
+$('lista2').addEventListener('click',async e=>{const bt=e.target.closest('button');if(!bt)return;const i=+bt.dataset.i,a=bt.dataset.a;
+ if(a==='rec'){ if(rec&&recI===i){rec.stop();return}
+  if(rec) return;
+  try{streamA=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:true,autoGainControl:true}})}catch(err){alert('Permita o uso do microfone para gravar.');return}
+  const tp=tipoA(); rec=new MediaRecorder(streamA,tp?{mimeType:tp}:{}); chunks=[];recI=i;
+  rec.ondataavailable=d=>d.data.size&&chunks.push(d.data);
+  rec.onstop=async()=>{const b=new Blob(chunks,{type:rec.mimeType||'audio/mp4'});streamA.getTracks().forEach(t=>t.stop());await put('vo'+i,b);marca(i,b);bt.textContent='● Gravar de novo';bt.classList.add('rec');rec=null;recI=-1};
+  rec.start(); bt.textContent='■ Parar';
+ }
+ if(a==='play'){const b=await get('vo'+i);if(b){new Audio(URL.createObjectURL(b)).play()}}
+ if(a==='env'){const b=await get('vo'+i);if(b)enviar([new File([b],`narracao-${i+1}.${ext(b.type)}`,{type:b.type})])}
+});
+$('baixarTudo').onclick=async()=>{const fs=[];for(let i=0;i<VO.length;i++){const b=await get('vo'+i);if(b)fs.push(new File([b],`narracao-${i+1}.${ext(b.type)}`,{type:b.type}))}
+ if(!fs.length){$('stTudo').textContent='Grave pelo menos uma narração primeiro.';return} $('stTudo').textContent=`${fs.length} de ${VO.length} narrações.`;enviar(fs)};
+// teleprompter
+let k=0,camS=null,recV=null,chV=[];
+function mostra(){const c=CAM[k];$('tpTxt').innerHTML=c[1];$('tpCo').textContent=c[2];$('tpN').textContent=`${k+1}/${CAM.length} · ${c[0]}`;$('ant').disabled=k===0;$('prox').textContent=k===CAM.length-1?'Fim ✓':'Próxima →'}
+$('abrir').onclick=async()=>{k=0;mostra();$('tp').style.display='flex';
+ try{camS=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user',width:{ideal:1080},height:{ideal:1920}},audio:true});$('cam').srcObject=camS;$('cam').play()}catch(e){$('gravarV').style.display='none'}};
+$('fechar').onclick=()=>{if(recV)recV.stop();if(camS)camS.getTracks().forEach(t=>t.stop());$('tp').style.display='none'};
+$('ant').onclick=()=>{if(k>0){k--;mostra()}};$('prox').onclick=()=>{if(k<CAM.length-1){k++;mostra()}else $('fechar').onclick()};
+document.addEventListener('keydown',e=>{if($('tp').style.display!=='flex')return;if(e.key==='ArrowRight'||e.key===' ')$('prox').onclick();if(e.key==='ArrowLeft')$('ant').onclick()});
+$('gravarV').onclick=()=>{ if(recV){recV.stop();return} if(!camS)return;
+ const tp=tipoV(); recV=new MediaRecorder(camS,tp?{mimeType:tp}:{}); chV=[];
+ recV.ondataavailable=d=>d.data.size&&chV.push(d.data);
+ recV.onstop=async()=>{const b=new Blob(chV,{type:recV.mimeType||'video/mp4'});const n=(await keys()).filter(x=>String(x).startsWith('vid')).length+1;await put('vid'+n,b);recV=null;$('gravarV').textContent='● Gravar';$('tpRec').style.display='none';listaVids()};
+ recV.start(); $('gravarV').textContent='■ Parar'; $('tpRec').style.display='block';};
+async function listaVids(){await abre;const ks=(await keys()).filter(x=>String(x).startsWith('vid'));if(!ks.length){$('vids').textContent='Nenhum ainda.';return}
+ $('vids').innerHTML=ks.map(x=>`<div class=card><div class=lb>${x.replace('vid','Vídeo ')}</div><button class="btn sec" data-v=${x} data-a=ver>▶ Ver</button><button class="btn" data-v=${x} data-a=env>⬆ Enviar</button></div>`).join('')}
+$('vids').addEventListener('click',async e=>{const bt=e.target.closest('button');if(!bt)return;const b=await get(bt.dataset.v);if(!b)return;
+ if(bt.dataset.a==='ver'){const w=window.open(URL.createObjectURL(b),'_blank');if(!w)location.href=URL.createObjectURL(b)}
+ else enviar([new File([b],`${bt.dataset.v}.${ext(b.type)}`,{type:b.type})])});
+montaVO();listaVids();
+</script>
